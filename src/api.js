@@ -42,8 +42,8 @@ class KitchenApi {
    }
 
    /** Get all recipes; filter: cuisine */
-   static async getAllRecipes({ cuisine }) {
-      let res = await this.request(`recipes`, { cuisine })
+   static async getAllRecipes({ cuisine, title, ingredients }) {
+      let res = await this.request(`recipes`, { cuisine, title, ingredients });
       return res.recipes;
    }
 
@@ -53,25 +53,25 @@ class KitchenApi {
       return res.recipe;
    }
 
-   /** Get user's list of recipes by unsername. */
-   static async getRecipe(username) {
-      let res = await this.request(`recipes/${username}`)
-      return res.recipe;
+   /** Log recipe to daily calories */
+   static async logRecipe() {
+      let res = await this.request(`calLogs/log`, data);
+      return res.log;
    }
 
    /** Update recipe; 
     * need to check currentUser.username === recipe.username
    */
-   static async updateRecipe(username, id, data) {
-      let res = await this.request(`recipes/${username}/${id}`, data, "post")
+   static async updateRecipe(id, data) {
+      let res = await this.request(`recipes/${id}`, data, "post")
       return res.recipe;
    }
 
    /** Delete recipe 
     * need to check currentUser.username === recipe.username
    */
-   static async deleteRecipe(username, id) {
-      await this.request(`recipes/${username}/${id}`, "delete")
+   static async deleteRecipe(id) {
+      await this.request(`recipes/${id}`, "delete")
    }
 
    // -----------------------------------------Users
@@ -93,7 +93,11 @@ class KitchenApi {
       return res.token;
    }
 
-   /** Get user by id */
+   /** Get user by id 
+    * Returns :
+    *  - user's personal infor
+    *  - lists users recipes
+   */
    static async getUser(username) {
       let res = await this.request(`users/${username}`)
       return res.user;
@@ -129,12 +133,46 @@ class KitchenApi {
    /** Unsave/Remove favorited recipe 
     * verify currentUser.username === recipe.username
    */
-   static async removeFavoriteRecipe(username, id) {
-      let res = await this.request(`favorites/${username}/${id}`, "post")
+   static async removeFavoriteRecipe(id) {
+      let res = await this.request(`favorites/${id}`, "post")
       return res.id;
    }
 
-   // -----------------------------------------Favorites
+
+   // -----------------------------------------Variations
+   /** Get recipe variations byCuisine */
+   static async varByCuisine(id) {
+      let res = await this.request(`variations/bycuisine/${id}`);
+      return res.variations;
+   }
+
+   /** Get recipe variations byIngredients */
+   static async varByIngredients(id) {
+      let res = await this.request(`variations/byingredients/${id}`);
+      return res.variations;
+   }
+
+   /** Get variation recipe 
+    * accepts variation ID from 
+    *    - bycuisine or
+    *    - byingredients
+   */
+   static async getVarRecipe(varId) {
+      let res = await this.request(`variations/recipe/${varId}`);
+      return res.recipe;
+   }
+
+   /** Favorite Variation Recipe */
+   static async favoriteVarRecipe() {
+      let res = await this.request(`variations/favorite`, data, "post");
+      return res.favorite;
+   }
+
+   /** Log Variation Recipe to daily calories */
+   static async logVarRecipe() {
+      let res = await this.request(`variations/log`, data, "post");
+      return res.log;
+   }
 };
 
 export default KitchenApi;
