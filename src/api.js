@@ -42,8 +42,8 @@ class KitchenApi {
    }
 
    /** Get all recipes; filter: cuisine */
-   static async getAllRecipes({ cuisine, title, ingredients }) {
-      let res = await this.request(`recipes`, { cuisine, title, ingredients });
+   static async getAllRecipes(cuisine, title, ingredients) {
+      let res = await this.request("recipes", { cuisine, title, ingredients });
       return res.recipes;
    }
 
@@ -54,7 +54,7 @@ class KitchenApi {
    }
 
    /** Log recipe to daily calories */
-   static async logRecipe() {
+   static async logRecipe(data) {
       let res = await this.request(`calLogs/log`, data);
       return res.log;
    }
@@ -63,7 +63,7 @@ class KitchenApi {
     * need to check currentUser.username === recipe.username
    */
    static async updateRecipe(id, data) {
-      let res = await this.request(`recipes/${id}`, data, "post")
+      let res = await this.request(`recipes/${id}`, data, "patch")
       return res.recipe;
    }
 
@@ -91,6 +91,12 @@ class KitchenApi {
    static async login(userData) {
       let res = await this.request(`auth/token`, userData, "post")
       return res.token;
+   }
+
+   /** Get all users */
+   static async getAllUsers() {
+      let res = await this.request(`users`);
+      return res.users;
    }
 
    /** Get user by id 
@@ -163,13 +169,13 @@ class KitchenApi {
    }
 
    /** Favorite Variation Recipe */
-   static async favoriteVarRecipe() {
+   static async favoriteVarRecipe(data) {
       let res = await this.request(`variations/favorite`, data, "post");
       return res.favorite;
    }
 
    /** Log Variation Recipe to daily calories */
-   static async logVarRecipe() {
+   static async logVarRecipe(data) {
       let res = await this.request(`variations/log`, data, "post");
       return res.log;
    }
