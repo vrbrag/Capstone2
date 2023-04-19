@@ -1,26 +1,31 @@
 import React, { useContext } from 'react'
-// import UserContext from './auth/UserContext';
+import UserContext from './auth/UserContext';
 import { Link } from 'react-router-dom'
 // import './Home.css'
 
 function Home() {
-
-   console.debug("Homepage", "currentUser=");
+   const { currentUser } = useContext(UserContext)
+   console.debug("Homepage", "currentUser=", currentUser);
 
    return (
       <div className="Home">
-         <h1>My Kitchen</h1>
-         <h3>What's cookin'?</h3>
-         <p>
-            Login
-            Signup
-         </p>
-         <p>
-            You have *** calories left to meet your daily goal!
-         </p>
-         <Link to="/recipes">Recipes</Link>
-         <Link to="/login">Log</Link>
-         <Link to="/register">Register</Link>
+         <div>
+            <h1>My Kitchen</h1>
+            <p>Create your favorite recipes today!</p>
+            {currentUser ?
+               <h3>What's cookin' {currentUser.firstName || currentUser.username}? </h3>
+
+
+               : (
+                  <p>
+                     <Link className="btn btn-success font-weight-bold mr-3" to="/login">Log in
+                     </Link>
+                     <Link className="btn btn-success font-weight-bold mr-3" to="/register">Register
+                     </Link>
+                  </p>
+               )
+            }
+         </div>
       </div>
    )
 };

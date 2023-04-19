@@ -82,7 +82,7 @@ class KitchenApi {
    }
 
    /** Signup user */
-   static async signup(userData) {
+   static async register(userData) {
       let res = await this.request(`auth/register`, userData, "post")
       return res.token;
    }
