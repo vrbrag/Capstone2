@@ -11,6 +11,7 @@ function Register({ register }) {
       lastName: "",
       email: "",
       age: "",
+      weight: "",
       height: "",
       gender: "",
       pal: "",
@@ -30,7 +31,7 @@ function Register({ register }) {
       evt.preventDefault();
       let result = await register(formData);
       if (result.success) {
-         history.push("/recipes");
+         history.push("/");
       } else {
          setFormErrors(result.errors)
       }
@@ -123,10 +124,26 @@ function Register({ register }) {
                         <input
                            className="form-control"
                            id="age"
-                           type="text"
+                           type="number"
+                           pattern="[0-9]*"
                            name="age"
                            placeholder="Age"
                            value={formData.age}
+                           onChange={handleChange}
+                           required
+                        />
+                     </div>
+
+                     <div className="form-group">
+                        {/* <label>Weight</label> */}
+                        <input
+                           className="form-control"
+                           id="weight"
+                           type="number"
+                           pattern="[0-9]*"
+                           name="weight"
+                           placeholder="Weight"
+                           value={formData.weight}
                            onChange={handleChange}
                            required
                         />
@@ -137,7 +154,7 @@ function Register({ register }) {
                         <input
                            className="form-control"
                            id="height"
-                           type="text"
+                           type="integer"
                            name="height"
                            placeholder="Height (inches)"
                            value={formData.height}
@@ -148,7 +165,18 @@ function Register({ register }) {
 
                      <div className="form-group">
                         {/* <label>Gender</label> */}
-                        <input
+                        <select
+                           className="form-control"
+                           id="gender"
+                           value={formData.gender} onChange={handleChange}
+                           name="gender"
+                           placeholder="Gender"
+                           required
+                        >
+                           <option value="male">Male</option>
+                           <option value="female">Female</option>
+                        </select>
+                        {/* <input
                            className="form-control"
                            id="gender"
                            type="text"
@@ -156,27 +184,55 @@ function Register({ register }) {
                            placeholder="Gender"
                            value={formData.gender}
                            onChange={handleChange}
-                           required
-                        />
+                        
+                        /> */}
+
                      </div>
 
                      <div className="form-group">
                         {/* <label>Physical Activity</label> */}
-                        <input
+                        <select
                            className="form-control"
                            id="pal"
-                           type="text"
+                           value={formData.pal} onChange={handleChange}
+                           name="pal"
+                           placeholder="Physical Activity Level"
+                           required
+                        >
+                           <option value="1.2">Little or No exercise</option>
+                           <option value="1.4">Light exercise 1-2 times a week</option>
+                           <option value="1.6">Moderate exercise 2-3 times/week</option>
+                           <option value="1.75">Hard exercise 3-5 times/week</option>
+                           <option value="2.0">I have a physical job or perform hard exercise 6-7 times/week</option>
+                           <option value="2.4">Professional Athlete</option>
+                        </select>
+                        {/* <input
+                           className="form-control"
+                           id="pal"
+                           type="number"
                            name="pal"
                            placeholder="Physical Activity Level"
                            value={formData.pal}
                            onChange={handleChange}
-                           required
-                        />
+                        // required
+                        /> */}
                      </div>
 
                      <div className="form-group">
                         {/* <label>Goal Weight</label> */}
-                        <input
+                        <select
+                           className="form-control"
+                           id="goalWeight"
+                           value={formData.goalWeight} onChange={handleChange}
+                           name="goalWeight"
+                           placeholder="Goal Weight"
+                           required
+                        >
+                           <option value="lose">Lose</option>
+                           <option value="maintain">Maintain</option>
+                           <option value="gain">Gain</option>
+                        </select>
+                        {/* <input
                            className="form-control"
                            id="goalWeight"
                            type="text"
@@ -184,8 +240,8 @@ function Register({ register }) {
                            placeholder="Goal Weight"
                            value={formData.goalWeight}
                            onChange={handleChange}
-                           required
-                        />
+                        // required
+                        /> */}
                      </div>
 
                      {/* {formErrors.length
@@ -193,7 +249,7 @@ function Register({ register }) {
                         : null
                      } */}
 
-                     <button className="btn font-weight-bold mr-3" type="submit">
+                     <button className="btn btn success font-weight-bold mr-3" type="submit">
                         Register
                      </button>
 

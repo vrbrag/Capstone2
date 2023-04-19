@@ -46,6 +46,16 @@ function NavBar({ logout }) {
 
                <Nav className="ms-auto" navbar>
                   <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/recipes">Recipes</NavLink>
+                  </NavItem>
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/favorites">Favorites</NavLink>
+                  </NavItem>
+
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/profile">Profile</NavLink>
+                  </NavItem>
+                  <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/login">Login</NavLink>
                   </NavItem>
                   <NavItem className="navbar-item">

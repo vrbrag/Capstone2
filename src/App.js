@@ -44,7 +44,7 @@ function App() {
 
   async function register(registerData) {
     try {
-      let token = await KitchenApi.register(register)
+      let token = await KitchenApi.register(registerData)
       setToken(token)
       return { success: true }
     } catch (e) {
