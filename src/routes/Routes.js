@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Home from '../Home';
 import Login from '../auth/Login';
-import Register from '../auth/Register';
+import NewRegister from '../auth/NewRegister';
 import RecipeList from '../recipes/RecipeList';
 import FavoriteList from '../favorites/FavoriteList';
 
@@ -18,7 +18,7 @@ function Routes({ login, register }) {
          </Route>
 
          <Route exact path="/register" >
-            <Register register={register} />
+            <NewRegister register={register} />
          </Route>
 
          <Route exact path="/recipes">

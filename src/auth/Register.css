@@ -6,3 +6,12 @@
 button{
    justify-content: center;
 }
+
+input.input-error,
+select.input-error {
+   border-color: #fc8181;
+}
+
+.error{
+  color:#fc8181;
+}
