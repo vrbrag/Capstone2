@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import NumericInput from 'react-numeric-input';
 // import Alert from '../Alert'
-// import './Register.css'
+import './Register.css'
 
 function Register({ register }) {
    const [formData, setFormData] = useState({
@@ -13,9 +14,9 @@ function Register({ register }) {
       age: "",
       weight: "",
       height: "",
-      gender: "",
-      pal: "",
-      goalWeight: "",
+      gender: "male",
+      pal: 1.2,
+      goalWeight: "lose",
    });
    const [formErrors, setFormErrors] = useState([]);
 
@@ -154,7 +155,7 @@ function Register({ register }) {
                         <input
                            className="form-control"
                            id="height"
-                           type="integer"
+                           type="number"
                            name="height"
                            placeholder="Height (inches)"
                            value={formData.height}
@@ -168,12 +169,12 @@ function Register({ register }) {
                         <select
                            className="form-control"
                            id="gender"
-                           value={formData.gender} onChange={handleChange}
                            name="gender"
                            placeholder="Gender"
+                           value={formData.gender} onChange={handleChange}
                            required
                         >
-                           <option value="male">Male</option>
+                           <option selected value="male">Male</option>
                            <option value="female">Female</option>
                         </select>
                         {/* <input
@@ -194,17 +195,19 @@ function Register({ register }) {
                         <select
                            className="form-control"
                            id="pal"
-                           value={formData.pal} onChange={handleChange}
+                           type="number"
+                           value={formData.pal}
                            name="pal"
                            placeholder="Physical Activity Level"
+                           onChange={handleChange}
                            required
                         >
-                           <option value="1.2">Little or No exercise</option>
-                           <option value="1.4">Light exercise 1-2 times a week</option>
-                           <option value="1.6">Moderate exercise 2-3 times/week</option>
-                           <option value="1.75">Hard exercise 3-5 times/week</option>
-                           <option value="2.0">I have a physical job or perform hard exercise 6-7 times/week</option>
-                           <option value="2.4">Professional Athlete</option>
+                           <option value={1.2}>Little or No exercise</option>
+                           <option value={1.4}>Light exercise 1-2 times a week</option>
+                           <option value={1.6}>Moderate exercise 2-3 times/week</option>
+                           <option value={1.75}>Hard exercise 3-5 times/week</option>
+                           <option value={2.0}>I have a physical job or perform hard exercise 6-7 times/week</option>
+                           <option value={2.4}>Professional Athlete</option>
                         </select>
                         {/* <input
                            className="form-control"
@@ -223,9 +226,10 @@ function Register({ register }) {
                         <select
                            className="form-control"
                            id="goalWeight"
-                           value={formData.goalWeight} onChange={handleChange}
+                           value={formData.goalWeight}
                            name="goalWeight"
                            placeholder="Goal Weight"
+                           onChange={handleChange}
                            required
                         >
                            <option value="lose">Lose</option>
