@@ -13,7 +13,7 @@ function NavBar({ logout }) {
          <div >
             <Navbar className="nav-brand" color="success" expand="md">
                <NavLink exact to="/" className="navbar-brand mr-2">
-                  Jobly
+                  My Kitchen
                </NavLink>
 
                <Nav className="ms-auto" navbar>

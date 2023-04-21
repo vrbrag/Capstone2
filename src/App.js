@@ -9,11 +9,14 @@ import KitchenApi from './api';
 import UserContext from './auth/UserContext';
 import jwt from "jsonwebtoken";
 
-export const TOKEN_STORAGE_ID = "ktichen-token"
+export const TOKEN_STORAGE_ID = "ktichen-token";
+
 function App() {
 
+  const [favoriteIds, setFavoriteIds] = useState(new Set([]))
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+
 
   console.debug(
     "App",
@@ -68,10 +71,28 @@ function App() {
     setToken(null)
   };
 
+  // check if favorite 'id' is in 'favoriteIds'
+  function hasFavoritedRecipe(id) {
+    return favoriteIds.has(id)
+  }
+  // API call to 'FAVORITE' a recipe
+  function favoriteRecipe(id) {
+    if (hasFavoritedRecipe(id)) return
+    KitchenApi.favoriteRecipe(id, currentUser.username);
+    setFavoriteIds(new Set([...favoriteIds, id]));
+  }
+  // API call to 'UNfavorite' a recipe
+  function unFavoriteRecipe(id) {
+    if (!hasFavoritedRecipe(id)) return
+    KitchenApi.removeFavoriteRecipe(id);
+    setFavoriteIds(new Set([...favoriteIds]));
+  }
+
+
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteRecipe, unFavoriteRecipe }}>
           <div className="App">
             <NavBar logout={logout} />
             <Routes login={login} register={register} />

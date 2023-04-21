@@ -4,34 +4,44 @@ import UserContext from '../auth/UserContext';
 import FavoriteCard from './FavoriteCard';
 
 function FavoriteList() {
-   console.debug("FavoriteList", "currentUser=", currentUser)
+
 
    const { currentUser } = useContext(UserContext);
    const [favorites, setFavorites] = useState([]);
 
-   const username = currentUser.username;
-   // const username = testuser1;
-   async function getItems(username) {
-      let f = await KitchenApi.getAllFavorites(username);
+   console.debug("FavoriteList", "currentUser=", currentUser)
+
+
+   async function getItems(currentUser) {
+      let f = await KitchenApi.getAllFavorites(currentUser.username);
+      console.log("favorites=", f)
       setFavorites(f)
    }
 
    useEffect(() => {
-      getItems(username);
+      getItems(currentUser);
    }, []);
+
+
+
 
    return (
       <div className="FavoriteList">
-         <h1>Favorite Recipes</h1>
+         <h1>My Favorite Recipes</h1>
 
          <div className="FavoriteList-list">
-            {favorites.map(f => (
+            {favorites.length ? favorites.map(f => (
                <FavoriteCard
-                  key={f.id}
-                  id={f.id}
+                  key={f.recipe_id}
+                  id={f.recipe_id}
                   username={f.username}
+                  title={f.title}
+
                />
-            ))}
+            )) : (
+               <p>No favorites yet!</p>
+            )
+            }
          </div>
       </div >
    )
