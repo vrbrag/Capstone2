@@ -6,12 +6,17 @@ import NewRegister from '../auth/NewRegister';
 import RecipeList from '../recipes/RecipeList';
 import RecipeDetails from '../recipes/RecipeDetails';
 import FavoriteList from '../favorites/FavoriteList';
+import CreateRecipe from '../recipes/CreateRecipe';
 
 function Routes({ login, register }) {
    return (
       <div className="main">
          <Route exact path="/">
             <Home />
+         </Route>
+
+         <Route exact path="/create">
+            <CreateRecipe />
          </Route>
 
          <Route exact path="/login">

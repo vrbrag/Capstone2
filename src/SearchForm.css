@@ -1,9 +1,9 @@
-*{
-   margin: 0;
+.SearchForm{
+   margin: 10px;
    padding: 0;
    box-sizing: border-box;
 }
-.container{
+.SearchForm .container{
    /* width: 100%;
    height: 100vh; */
    /* background: burlywood; */
@@ -11,19 +11,19 @@
    align-items: center;
    justify-content: center;
 }
-form{
+.SearchForm form{
    /* background: cornsilk; */
    width: 600px;
    height: 55px;
    display: flex;
 }
-form input{
+.Search form input{
    flex: 1;
    border: none;
    outline: none;
    padding-left: 10px;
 }
-form button{
+.SearchForm form button{
    background: rgb(235, 172, 12);
    padding: 10px 50px;
    border: none;

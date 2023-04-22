@@ -4,6 +4,7 @@ import { registerSchema } from '../schemas/registerSchema';
 // import Alert from '../Alert';
 import { useFormik } from 'formik';
 import './Register.css'
+import { Button } from 'reactstrap';
 
 function NewRegister({ register }) {
 
@@ -263,9 +264,14 @@ function NewRegister({ register }) {
                         : null
                      } */}
 
-                     <button className="btn btn success font-weight-bold mr-3" type="submit">
+                     <Button
+                        className="btn"
+                        outline
+                        color="warning"
+                        size="sm"
+                        type="submit">
                         Register
-                     </button>
+                     </Button>
 
                   </form>
                </div>

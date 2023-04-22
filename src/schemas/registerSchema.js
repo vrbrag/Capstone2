@@ -11,6 +11,6 @@ export const registerSchema = yup.object().shape({
    weight: yup.number().min(0).required("Required"),
    height: yup.number().min(0).max(200).required("Required"),
    gender: yup.string().required("Required"),
-   pal: yup.number().required("Required"),
+   pal: yup.number("Must be a number").required("Required"),
    goalWeight: yup.string().required("Required"),
 })

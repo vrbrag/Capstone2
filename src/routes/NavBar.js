@@ -21,6 +21,9 @@ function NavBar({ logout }) {
                      <NavLink className="nav-link" to="/recipes">All Recipes</NavLink>
                   </NavItem>
                   <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/create">Create Recipe</NavLink>
+                  </NavItem>
+                  <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/favorites">Favorites</NavLink>
                   </NavItem>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Button } from 'reactstrap';
 // import Alert from '../Alert'
 // import './Login.css'
 
@@ -66,9 +67,14 @@ function Login({ login }) {
                         ? <Alert type="danger" messages={formErrors} />
                         : null} */}
 
-                     <button className="btn font-weight-bold mr-3" type="submit">
+                     <Button
+                        className="btn"
+                        outline
+                        color="warning"
+                        size="sm"
+                        type="submit">
                         Login
-                     </button>
+                     </Button>
 
                   </form>
                </div>
