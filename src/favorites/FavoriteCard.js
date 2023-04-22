@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardTitle } from 'reactstrap';
+import { Card, CardTitle, Button, ButtonGroup } from 'reactstrap';
 import UserContext from '../auth/UserContext';
 
 function FavoriteCard({ id, title }) {
@@ -30,8 +30,23 @@ function FavoriteCard({ id, title }) {
             <Link className="FavoriteCard" to={`/recipe/${id}`}>
                <CardTitle className="card-title">{title}</CardTitle>
             </Link>
-            <button className="btn btn-success font-weight-bold mr-3" onClick={handleUnFavorite}>Unfavorite</button>
-            <button className="btn btn-success font-weight-bold mr-3">Log</button>
+            <ButtonGroup>
+               <Button
+                  // className="btn btn-success font-weight-bold mr-3"
+                  className="btn"
+                  outline color="warning"
+                  size="sm"
+                  onClick={handleUnFavorite}>Unfavorite
+               </Button>
+               <Button
+                  // className="btn btn-success font-weight-bold mr-3"
+                  className="btn"
+                  outline color="warning"
+                  size="sm"
+               >
+                  Log
+               </Button>
+            </ButtonGroup>
          </Card>
 
 

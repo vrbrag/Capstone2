@@ -1,28 +1,35 @@
 .App {
-  text-align: center;
-  
+  /* text-align: center; */
+  margin: 10px;
 }
 
 body{
-  background-color: rgb(34, 0, 0);
+  background-color: papayawhip;
 }
 
 .card {
-  border-radius: 0;
-  color: whitesmoke;
+  /* border-radius: 0; */
+  color: black;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  background-color: #013e52;
-  border-radius: 5%;
-  margin: 20px ;
+  background-color: rgb(252, 242, 224);
+  border-radius: 2%;
+  margin: 40px 150px 40px 150px;
+  /* padding-right: 60%; */
+ 
 }
 
 .card-title{
-  font-size: 30px;
+  font-size: 25px;
 }
 .list-title{
-  color: whitesmoke;
+  color: black;
   font-size: 40px;
+}
+
+.btn {
+  margin: 10px 20px 10px 20px;
+  /* padding-right: 100px; */
 }
 
 

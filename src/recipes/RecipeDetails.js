@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { Card, CardTitle } from 'reactstrap';
+import { Card, CardTitle, Button } from 'reactstrap';
 import KitchenApi from '../api';
 
 function RecipeDetails() {
@@ -27,6 +27,12 @@ function RecipeDetails() {
 
    return (
       <div className="RecipeDetails col-md-8 offset-md-2">
+         {/* <Button
+            className="btn"
+            outline color="warning"
+            size="sm">
+            Back
+         </Button> */}
          <Card className="card-body">
             <CardTitle className="card-title">
                {title}
@@ -50,7 +56,14 @@ function RecipeDetails() {
                   ''
                )}
 
+            <Button
+               className="btn"
+               outline color="warning"
+               size="sm">
+               Find Similar Recipes
+            </Button>
          </Card>
+
       </div >
 
    )

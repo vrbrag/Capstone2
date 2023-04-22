@@ -20,9 +20,12 @@ function RecipeList() {
 
    return (
       <div className="RecipeList">
-         <h1 className="list-title">Recipes</h1>
+         <h1 className="list-title">All Recipes</h1>
          {/* SearchForm */}
-         <SearchForm search={getItems} />
+         <div>
+            <SearchForm search={getItems} />
+         </div>
+
          <div className="RecipeList-list">
             {recipes.map(r => (
                <RecipeCard

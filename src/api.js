@@ -131,9 +131,9 @@ class KitchenApi {
    /** Save/Favorite a recipe 
     * need to pass in username to db
    */
-   static async favoriteRecipe(id, username) {
-      let res = await this.request(`favorites/${id}`, username, "post")
-      return res.favorite;
+   static async favoriteRecipe(username, id) {
+      await this.request(`favorites/${username}/${id}`, {}, "post")
+
    }
 
    /** Unsave/Remove favorited recipe 

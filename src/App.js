@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import useLocalStorage from './hooks/useLocalStorage';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './routes/NavBar';
 import Routes from './routes/Routes';
 import KitchenApi from './api';
@@ -73,12 +72,14 @@ function App() {
 
   // check if favorite 'id' is in 'favoriteIds'
   function hasFavoritedRecipe(id) {
+    console.debug("User favoriteIds", favoriteIds)
     return favoriteIds.has(id)
   }
   // API call to 'FAVORITE' a recipe
-  function favoriteRecipe(id) {
-    if (hasFavoritedRecipe(id)) return
-    KitchenApi.favoriteRecipe(id, currentUser.username);
+  function favoriteThisRecipe(id) {
+    if (hasFavoritedRecipe(id)) return;
+    console.log("FavoriteRecipe", currentUser.username)
+    KitchenApi.favoriteRecipe(currentUser.username, id);
     setFavoriteIds(new Set([...favoriteIds, id]));
   }
   // API call to 'UNfavorite' a recipe
@@ -92,7 +93,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteRecipe, unFavoriteRecipe }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteThisRecipe, unFavoriteRecipe }}>
           <div className="App">
             <NavBar logout={logout} />
             <Routes login={login} register={register} />
