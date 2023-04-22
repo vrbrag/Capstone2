@@ -34,7 +34,7 @@ function App() {
           KitchenApi.token = token; // set token here
           let currentUser = await KitchenApi.getCurrentUser(username);
           setCurrentUser(currentUser);
-
+          setFavoriteIds(new Set(currentUser.favorites));
         } catch (e) {
           console.error("App getUserInfo error loading", e);
           setCurrentUser(null);

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function RecipeCard({ id, title, cuisine }) {
+function RecipeCard({ id, title, cuisine, avgCal }) {
 
    const { hasFavoritedRecipe, favoriteThisRecipe } = useContext(UserContext)
    const [favorited, setFavorited] = useState()
@@ -14,6 +14,7 @@ function RecipeCard({ id, title, cuisine }) {
 
    useEffect(function favoritedStatus() {
       setFavorited(hasFavoritedRecipe(id))
+
    }, [id, hasFavoritedRecipe])
 
    async function handleFavorite(e) {
@@ -30,7 +31,8 @@ function RecipeCard({ id, title, cuisine }) {
             <Link to={`/recipe/${id}`}>
                <CardTitle className="card-title">{title}</CardTitle>
             </Link>
-            <CardSubtitle>{cuisine}</CardSubtitle>
+            <CardSubtitle>Cuisine: {cuisine}</CardSubtitle>
+            <CardSubtitle>Cals: {avgCal}</CardSubtitle>
 
             <ButtonGroup>
                <Button

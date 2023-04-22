@@ -11,7 +11,9 @@ function Home() {
       <div className="Home">
          <div>
             <h1>My Kitchen</h1>
-            <p>Create your favorite recipes today!</p>
+            <p><small><i>
+               Create, Search, Favorite, and Log daily calories of all your favorite meals!
+            </i></small></p>
             {currentUser ?
                <h3>What's cookin' {currentUser.firstName || currentUser.username}? </h3>
 
