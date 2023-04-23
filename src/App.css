@@ -1,35 +1,56 @@
 .App {
-  /* text-align: center; */
-  margin: 10px;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body{
-  background-color: papayawhip;
+  background-color: rgb(221, 199, 165);
 }
 
 .card {
   /* border-radius: 0; */
-  color: black;
+  color: rgb(170, 129, 24);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgb(252, 242, 224);
-  border-radius: 2%;
+  background-color: rgb(233, 216, 186);
+  border-radius: 8px;
   margin: 40px 150px 40px 150px;
   /* padding-right: 60%; */
- 
+  
 }
-
+a{
+  text-decoration: none;
+  color: rgba(189, 21, 21, 0.473);
+}
+a:hover{
+  color: azure;
+}
 .card-title{
   font-size: 25px;
+  font-weight: 400;
+  
 }
-.list-title{
-  color: black;
+.list-title, .form-title{
+  color: rgba(189, 21, 21, 0.575);
+  letter-spacing: 5px;
   font-size: 40px;
+  margin-top: 15px;
+}
+.form-title{
+   /* text-align: center; */
+   margin: 20px;
 }
 
 .btn {
   margin: 10px 20px 10px 20px;
   /* padding-right: 100px; */
+  color: rgba(189, 21, 21, 0.473);
+  border: 1px solid rgba(189, 21, 21, 0.473);
+  transition-duration: 0.4s;
+}
+.btn:hover {
+  background-color: rgba(189, 21, 21, 0.473); 
+  color: white;
 }
 
 

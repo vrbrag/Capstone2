@@ -27,7 +27,7 @@ function FavoriteList() {
 
    return (
       <div className="FavoriteList">
-         <h1>My Favorite Recipes</h1>
+         <h1 className="list-title">favorites</h1>
 
          <div className="FavoriteList-list">
             {favorites.length ? favorites.map(f => (

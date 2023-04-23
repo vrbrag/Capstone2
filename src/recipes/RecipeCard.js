@@ -31,27 +31,29 @@ function RecipeCard({ id, title, cuisine, avgCal }) {
             <Link to={`/recipe/${id}`}>
                <CardTitle className="card-title">{title}</CardTitle>
             </Link>
-            <CardSubtitle>Cuisine: {cuisine}</CardSubtitle>
-            <CardSubtitle>Cals: {avgCal}</CardSubtitle>
+            <CardSubtitle>{cuisine}</CardSubtitle>
+            <CardSubtitle>{avgCal} cal</CardSubtitle>
 
             <ButtonGroup>
                <Button
                   // className="btn btn-warning .col-sm .col-sm-offset-1"
                   className="btn"
-                  outline color="warning"
+                  outline
+                  color="warning"
                   size="sm"
                   onClick={handleFavorite}
                   disabled={favorited}
                >
-                  {favorited ? "Favorited" : "Favorite"}
+                  {favorited ? "favorited" : "favorite"}
                </Button>{' '}
                <Button
                   // className="btn btn-warning font-weight-bold mr-3"
                   className="btn"
-                  outline color="warning"
+                  outline
+                  color="warning"
                   size="sm"
                >
-                  Log
+                  log
                </Button>
             </ButtonGroup>
          </Card>

@@ -1,0 +1,64 @@
+.NavBar {
+   background-color: rgba(189, 21, 21, 0.473);
+   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.NavBar:focus{
+   color:rgba(189, 21, 21, 0.473);
+}
+
+
+.nav-brand{
+   color: white;
+}
+ 
+
+.navbar-brand {
+   font-weight: bold;
+   color: white;
+   margin-left: 15px;
+   font-size: 25px;
+}
+.navbar-brand:hover{
+   color: blanchedalmond;
+}
+
+
+.nav-link{
+   color: rgba(189, 21, 21, 0.596);
+   transition-duration: 0.4s;
+}
+.nav-link:hover {
+   color: blanchedalmond;
+}
+.nav-link:focus{
+   color: rgba(189, 21, 21, 0.596);
+}
+/* .nav-link a{
+   position: relative;
+   text-decoration: none;
+   color: white;
+} */
+.navbar-item a:hover{
+   text-decoration: goldenrod;
+   
+}
+
+
+.navbar-item{
+   margin: 0px 15px 0px 15px;
+   box-sizing: border-box;
+}
+
+
+.navbar-brand-logout{
+   font-weight: bold;
+   color: white;
+   margin-left: 15px;
+   font-size: 25px;
+}
+#nav-logout{
+   color: rgba(189, 21, 21, 0.596);
+}
+#nav-logout:hover{
+   color: blanchedalmond;
+}

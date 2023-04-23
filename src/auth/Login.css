@@ -1,0 +1,18 @@
+.Login{
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+.Login .container{
+   width: 100%;
+   /* background: burlywood; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.Login form{
+   /* background: cornsilk; */
+   width: 600px;
+   height: 55px;
+   /* display: flex; */
+}

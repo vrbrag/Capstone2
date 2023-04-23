@@ -50,140 +50,140 @@ function NewRegister({ register }) {
 
    return (
       <div className="Register">
-         <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-            <h4>Register</h4>
-            <div className="card">
-               <div className="card-body">
-                  <form onSubmit={handleSubmit} autoComplete="off">
+         {/* <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4"> */}
+         <h4 className="form-title">Register</h4>
+         {/* <div className="card">
+            <div className="card-body"> */}
+         <form onSubmit={handleSubmit} autoComplete="off">
 
-                     <div className="form-group">
-                        <input
+            <div className="form-group">
+               <input
 
-                           id="username"
-                           type="text"
-                           name="username"
-                           placeholder="Username"
-                           value={values.username}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.username && touched.username ? "input-error" : ""}
-                        />
-                        {errors.username && touched.username && <p className="error">{errors.eusernamemusernameail}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="username"
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.username && touched.username ? "input-error" : ""}
+               />
+               {errors.username && touched.username && <p className="error">{errors.eusernamemusernameail}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="password"
-                           type="password"
-                           name="password"
-                           placeholder="Password"
-                           value={values.password}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.password && touched.password ? "input-error" : ""}
-                        />
-                        {errors.password && touched.password && <p className="error">{errors.password}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.password && touched.password ? "input-error" : ""}
+               />
+               {errors.password && touched.password && <p className="error">{errors.password}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="firstName"
-                           type="text"
-                           name="firstName"
-                           placeholder="First Name"
-                           value={values.firstName}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.firstName && touched.firstName ? "input-error " : ""}
-                        />
-                        {errors.firstName && touched.firstName && <p className="error">{errors.firstName}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="firstName"
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={values.firstName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.firstName && touched.firstName ? "input-error " : ""}
+               />
+               {errors.firstName && touched.firstName && <p className="error">{errors.firstName}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="lastName"
-                           type="text"
-                           name="lastName"
-                           placeholder="Last Name"
-                           value={values.lastName}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.lastName && touched.lastName ? "input-error" : ""}
-                        />
-                        {errors.lastName && touched.lastName && <p className="error">{errors.lastName}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="lastName"
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={values.lastName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.lastName && touched.lastName ? "input-error" : ""}
+               />
+               {errors.lastName && touched.lastName && <p className="error">{errors.lastName}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="email"
-                           type="text"
-                           name="email"
-                           placeholder="Email"
-                           value={values.email}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.email && touched.email ? "input-error" : ""}
-                        />
-                        {errors.email && touched.email && <p className="error">{errors.email}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="email"
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.email && touched.email ? "input-error" : ""}
+               />
+               {errors.email && touched.email && <p className="error">{errors.email}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="age"
-                           type="number"
-                           name="age"
-                           placeholder="Age"
-                           value={values.age}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.age && touched.age ? "input-error" : ""}
-                        />
-                        {errors.age && touched.age && <p className="error">{errors.age}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="age"
+                  type="number"
+                  name="age"
+                  placeholder="Age"
+                  value={values.age}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.age && touched.age ? "input-error" : ""}
+               />
+               {errors.age && touched.age && <p className="error">{errors.age}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="weight"
-                           type="number"
-                           name="weight"
-                           placeholder="Weight"
-                           value={values.weight}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.weight && touched.weight ? "input-error" : ""}
-                        />
-                        {errors.weight && touched.weight && <p className="error">{errors.weight}</p>}
-                     </div>
-                     <div className="form-group">
-                        <input
+                  id="weight"
+                  type="number"
+                  name="weight"
+                  placeholder="Weight"
+                  value={values.weight}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.weight && touched.weight ? "input-error" : ""}
+               />
+               {errors.weight && touched.weight && <p className="error">{errors.weight}</p>}
+            </div>
+            <div className="form-group">
+               <input
 
-                           id="height"
-                           type="number"
-                           name="height"
-                           placeholder="Height"
-                           value={values.height}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.height && touched.height ? "input-error" : ""}
-                        />
-                        {errors.height && touched.height && <p className="error">{errors.height}</p>}
-                     </div>
-                     <div className="form-group">
-                        <select
+                  id="height"
+                  type="number"
+                  name="height"
+                  placeholder="Height"
+                  value={values.height}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.height && touched.height ? "input-error" : ""}
+               />
+               {errors.height && touched.height && <p className="error">{errors.height}</p>}
+            </div>
+            <div className="form-group">
+               <select
 
-                           id="gender"
-                           name="gender"
-                           placeholder="Select gender"
-                           value={values.gender}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.gender && touched.gender ? "input-error" : ""}
-                        >
-                           <option>Gender...</option>
-                           <option value="male">Male</option>
-                           <option value="female">Female</option>
-                        </select>
-                        {/* <input
+                  id="gender"
+                  name="gender"
+                  placeholder="Select gender"
+                  value={values.gender}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.gender && touched.gender ? "input-error" : ""}
+               >
+                  <option>Gender...</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+               </select>
+               {/* <input
 
                            id="gender"
                            type="text"
@@ -194,11 +194,11 @@ function NewRegister({ register }) {
                            onBlur={handleBlur}
                            className={errors.gender && touched.gender ? "input-error" : ""}
                         /> */}
-                        {errors.gender && touched.gender && <p className="error">{errors.gender}</p>}
-                     </div>
-                     <div className="form-group">
+               {errors.gender && touched.gender && <p className="error">{errors.gender}</p>}
+            </div>
+            <div className="form-group">
 
-                        {/* <select
+               {/* <select
                            className="form-control"
                            id="pal"
                            type="number"
@@ -217,36 +217,36 @@ function NewRegister({ register }) {
                            <option value="2.4">Professional Athlete</option>
                         </select> */}
 
-                        <input
+               <input
 
-                           id="pal"
-                           type="number"
-                           name="pal"
-                           placeholder="Physical Activity Level"
-                           value={values.pal}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.pal && touched.pal ? "input-error" : ""}
-                        />
-                        {errors.pal && touched.pal && <p className="error">{errors.pal}</p>}
-                     </div>
-                     <div className="form-group">
-                        <select
+                  id="pal"
+                  type="number"
+                  name="pal"
+                  placeholder="Physical Activity Level"
+                  value={values.pal}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.pal && touched.pal ? "input-error" : ""}
+               />
+               {errors.pal && touched.pal && <p className="error">{errors.pal}</p>}
+            </div>
+            <div className="form-group">
+               <select
 
-                           id="goalWeight"
-                           name="goalWeight"
-                           placeholder="Select Goal"
-                           value={values.goalWeight}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           className={errors.goalWeight && touched.goalWeight ? "input-error" : ""}
-                        >
-                           <option>Select Goal Weight...</option>
-                           <option value="lose">Lose</option>
-                           <option value="maintain">Maintain</option>
-                           <option value="gain">Gain</option>
-                        </select>
-                        {/* <input
+                  id="goalWeight"
+                  name="goalWeight"
+                  placeholder="Select Goal"
+                  value={values.goalWeight}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.goalWeight && touched.goalWeight ? "input-error" : ""}
+               >
+                  <option>Select Goal Weight...</option>
+                  <option value="lose">Lose</option>
+                  <option value="maintain">Maintain</option>
+                  <option value="gain">Gain</option>
+               </select>
+               {/* <input
                            id="goalWeight"
                            type="text"
                            name="goalWeight"
@@ -256,27 +256,27 @@ function NewRegister({ register }) {
                            onBlur={handleBlur}
                            className={errors.goalWeight && touched.goalWeight ? "input-error" : ""}
                         /> */}
-                        {errors.goalWeight && touched.goalWeight && <p className="error">{errors.goalWeight}</p>}
-                     </div>
+               {errors.goalWeight && touched.goalWeight && <p className="error">{errors.goalWeight}</p>}
+            </div>
 
-                     {/* {formErrors.length
+            {/* {formErrors.length
                         ? <Alert type="danger" messages={formErrors} />
                         : null
                      } */}
 
-                     <Button
-                        className="btn"
-                        outline
-                        color="warning"
-                        size="sm"
-                        type="submit">
-                        Register
-                     </Button>
+            <Button
+               className="btn"
+               outline
+               color="warning"
+               size="sm"
+               type="submit">
+               register
+            </Button>
 
-                  </form>
-               </div>
-            </div>
-         </div >
+         </form>
+         {/* </div>
+         </div> */}
+         {/* </div > */}
       </div >
    )
 };

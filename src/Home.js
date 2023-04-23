@@ -20,9 +20,17 @@ function Home() {
 
                : (
                   <p>
-                     <Link className="btn btn-success font-weight-bold mr-3" to="/login">Log in
+                     <Link
+                        className="btn"
+                        outline
+                        color="warning"
+                        size="sm" to="/login">log in
                      </Link>
-                     <Link className="btn btn-success font-weight-bold mr-3" to="/register">Register
+                     <Link
+                        className="btn"
+                        outline
+                        color="warning"
+                        size="sm" to="/register">register
                      </Link>
                   </p>
                )

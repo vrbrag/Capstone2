@@ -2,6 +2,8 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   color: white;
+   font-size: large;
 }
 .Home {
    height: 100vh; 

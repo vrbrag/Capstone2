@@ -20,7 +20,7 @@ function RecipeList() {
 
    return (
       <div className="RecipeList">
-         <h1 className="list-title">All Recipes</h1>
+         <h1 className="list-title">all recipes</h1>
          {/* SearchForm */}
          <div>
             <SearchForm search={getItems} />

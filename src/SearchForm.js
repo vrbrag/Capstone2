@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button, Row, Col } from 'reactstrap';
 import './SearchForm.css'
 
 function SearchForm({ search }) {
@@ -25,7 +24,7 @@ function SearchForm({ search }) {
                <input
                   // className="form-control form-control-md flex-grow-1"
                   name="searchTerm"
-                  placeholder="Search by cuisine..."
+                  placeholder="search by cuisine..."
                   value={searchTerm}
                   onChange={handleChange}
                />
@@ -34,7 +33,7 @@ function SearchForm({ search }) {
                   // className="btn"
                   color="warning"
                   type="submit" >
-                  Search
+                  search
                </button>
 
             </form>
