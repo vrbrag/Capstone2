@@ -1,12 +1,21 @@
 import React, { useContext } from 'react'
+import { useState } from 'react';
 import { NavLink } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavbarText } from "reactstrap";
+import { Navbar, Nav, NavItem, NavbarText, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { Link } from "react-router-dom";
 import UserContext from '../auth/UserContext';
 import './NavBar.css'
 
 function NavBar({ logout }) {
    const { currentUser } = useContext(UserContext)
    console.debug("NavBar", "currentUser=", currentUser)
+
+   const [isRecipeOpen, setIsRecipeOpen] = useState(false);
+   const toggleRecipes = () => setIsRecipeOpen(!isRecipeOpen)
+
+   const [isSearchOpen, setIsSearchOpen] = useState(false);
+   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
+
 
    function loggedInNav() {
       return (
@@ -17,7 +26,7 @@ function NavBar({ logout }) {
                </NavLink>
 
                <Nav className="me-auto" navbar>
-                  <NavItem className="navbar-item">
+                  {/* <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/recipes">All Recipes</NavLink>
                   </NavItem>
                   <NavItem className="navbar-item">
@@ -25,17 +34,58 @@ function NavBar({ logout }) {
                   </NavItem>
                   <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/favorites">Favorites</NavLink>
-                  </NavItem>
+                  </NavItem> */}
+
+                  < Dropdown isOpen={isRecipeOpen} toggle={toggleRecipes} >
+                     <DropdownToggle color="none" className="navbar-item" caret>
+                        Recipes
+                     </DropdownToggle>
+                     <DropdownMenu>
+
+                        <DropdownItem className="navbar-item" tag={Link} to={`/recipes`} >
+                           all recipes
+                        </DropdownItem>
+                        <DropdownItem className="navbar-item" tag={Link} to={`/my-recipes`} >
+                           my recipes
+                        </DropdownItem>
+                        <DropdownItem className="navbar-item" tag={Link} to={`/create`} >
+                           create recipe
+                        </DropdownItem>
+                        {/* <DropdownItem divider /> */}
+                        <DropdownItem className="navbar-item" tag={Link} to={`/favorites`} >
+                           favorites
+                        </DropdownItem>
+                     </DropdownMenu>
+                  </Dropdown >
+
+                  < Dropdown isOpen={isSearchOpen} toggle={toggleSearch} >
+                     <DropdownToggle color="none" className="navbar-item" caret>
+                        Search by
+                     </DropdownToggle>
+                     <DropdownMenu>
+
+                        <DropdownItem className="navbar-item" tag={Link} to={`/search-cuisine`} >
+                           cuisine
+                        </DropdownItem>
+                        <DropdownItem className="navbar-item" tag={Link} to={`/search-title`} >
+                           title
+                        </DropdownItem>
+                        <DropdownItem className="navbar-item" tag={Link} to={`/search-ingredient`} >
+                           ingredient
+                        </DropdownItem>
+                     </DropdownMenu>
+                  </Dropdown >
 
                   <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/profile">Profile</NavLink>
                   </NavItem>
                </Nav>
+
                <NavbarText className="navbar-item">
                   <NavLink id="nav-logout" className="nav-link" to="/" onClick={logout}>Logout {currentUser.first_name || currentUser.username} </NavLink>
                </NavbarText>
             </Navbar>
-         </div>
+         </div >
       )
    }
 
