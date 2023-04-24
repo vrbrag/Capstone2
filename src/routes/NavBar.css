@@ -19,7 +19,7 @@
    font-size: 25px;
 }
 .navbar-brand:hover{
-   color: blanchedalmond;
+   color: rgba(189, 21, 21, 0.596);
 }
 
 
@@ -28,7 +28,7 @@
    transition-duration: 0.4s;
 }
 .nav-link:hover {
-   color: blanchedalmond;
+   color: white;
 }
 .nav-link:focus{
    color: rgba(189, 21, 21, 0.596);
@@ -60,5 +60,5 @@
    color: rgba(189, 21, 21, 0.596);
 }
 #nav-logout:hover{
-   color: blanchedalmond;
+   color: white;
 }

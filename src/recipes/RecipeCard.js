@@ -39,7 +39,7 @@ function RecipeCard({ id, title, cuisine, avgCal }) {
                   // className="btn btn-warning .col-sm .col-sm-offset-1"
                   className="btn"
                   outline
-                  color="warning"
+                  // color="warning"
                   size="sm"
                   onClick={handleFavorite}
                   disabled={favorited}
@@ -50,7 +50,7 @@ function RecipeCard({ id, title, cuisine, avgCal }) {
                   // className="btn btn-warning font-weight-bold mr-3"
                   className="btn"
                   outline
-                  color="warning"
+                  // color="warning"
                   size="sm"
                >
                   log

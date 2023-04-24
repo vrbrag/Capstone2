@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchForm.css'
 
-function SearchForm({ search }) {
+function SearchForm({ search, placeholder }) {
    console.log("SearchForm", typeof search)
    const [searchTerm, setSearchTerm] = useState("")
 
@@ -15,6 +15,10 @@ function SearchForm({ search }) {
       setSearchTerm(searchTerm.trim())
    }
 
+   function clearSearch() {
+      setSearchTerm("")
+   }
+
    return (
       <div className="container">
          <div className="SearchForm">
@@ -24,14 +28,19 @@ function SearchForm({ search }) {
                <input
                   // className="form-control form-control-md flex-grow-1"
                   name="searchTerm"
-                  placeholder="search by cuisine..."
+                  placeholder={placeholder}
                   value={searchTerm}
                   onChange={handleChange}
                />
-
                <button
-                  // className="btn"
-                  color="warning"
+                  className="clear"
+                  outline color="warning"
+                  onClick={clearSearch}>
+                  x
+               </button>
+               <button
+                  className="search"
+                  outline color="warning"
                   type="submit" >
                   search
                </button>

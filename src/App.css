@@ -51,6 +51,11 @@ a:hover{
 .btn:hover {
   background-color: rgba(189, 21, 21, 0.473); 
   color: white;
+  border-color: rgba(189, 21, 21, 0.473);
+}
+
+.searchbars{
+  display: inline-block;
 }
 
 

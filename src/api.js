@@ -42,8 +42,18 @@ class KitchenApi {
    }
 
    /** Get all recipes; filter: cuisine */
-   static async getAllRecipes(cuisine, title, ingredients) {
-      let res = await this.request("recipes", { cuisine, title, ingredients });
+   static async getAllRecipesTitle(title) {
+      let res = await this.request("recipes", { title });
+      return res.recipes;
+   }
+   /** Get all recipes; filter: title */
+   static async getAllRecipesCuisine(cuisine) {
+      let res = await this.request("recipes", { cuisine });
+      return res.recipes;
+   }
+   /** Get all recipes; filter: ingredient */
+   static async getAllRecipesIngredient(ingredients) {
+      let res = await this.request("recipes", { ingredients });
       return res.recipes;
    }
 

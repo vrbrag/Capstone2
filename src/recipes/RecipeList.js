@@ -8,22 +8,42 @@ function RecipeList() {
 
    const [recipes, setRecipes] = useState([]);
 
-   async function getItems(cuisine, title, ingredients) {
-      let r = await KitchenApi.getAllRecipes(cuisine, title, ingredients);
+   async function getCuisine(cuisine) {
+      let r = await KitchenApi.getAllRecipesCuisine(cuisine);
+      console.log(r)
+      setRecipes(r)
+   };
+   async function getTitle(title) {
+      let r = await KitchenApi.getAllRecipesTitle(title);
+      console.log(r)
+      setRecipes(r)
+   };
+   async function getIngredient(ingredients) {
+      let r = await KitchenApi.getAllRecipesIngredient(ingredients);
       console.log(r)
       setRecipes(r)
    };
 
    useEffect(() => {
-      getItems();
+      getCuisine();
+      getTitle();
+      getIngredient();
    }, []);
 
    return (
       <div className="RecipeList">
          <h1 className="list-title">all recipes</h1>
-         {/* SearchForm */}
-         <div>
-            <SearchForm search={getItems} />
+         <div className="searchbars">
+            {/* SearchForm */}
+            <div>
+               <SearchForm placeholder="search by cuisine..." search={getCuisine} />
+            </div>
+            <div>
+               <SearchForm placeholder="search by title..." search={getTitle} />
+            </div>
+            <div>
+               <SearchForm placeholder="search by ingredient..." search={getIngredient} />
+            </div>
          </div>
 
          <div className="RecipeList-list">
