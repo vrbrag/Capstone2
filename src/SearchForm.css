@@ -11,11 +11,13 @@
 .SearchForm form{
    /* background: cornsilk; */
    width: 600px;
-   height: 55px;
+   height: 35px;
    display: flex;
 }
 .SearchForm input{
    flex: 1;
+   max-width: 50%;
+   margin-left: 23%;
    /* border: none;
    outline: none; */
    padding-left: 10px;
@@ -31,7 +33,7 @@
  }
 .SearchForm .search{
    background: rgba(189, 21, 21, 0.315);
-   padding: 10px 30px;
+   padding: 10px 10px;
    border: none;
    outline: none;
    color: #fff;
