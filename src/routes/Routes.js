@@ -7,6 +7,7 @@ import RecipeList from '../recipes/RecipeList';
 import RecipeDetails from '../recipes/RecipeDetails';
 import FavoriteList from '../favorites/FavoriteList';
 import CreateRecipe from '../recipes/CreateRecipe';
+import MyRecipesList from '../recipes/MyRecipesList';
 
 function Routes({ login, register }) {
    return (
@@ -33,6 +34,10 @@ function Routes({ login, register }) {
 
          <Route exact path="/recipe/:id">
             <RecipeDetails />
+         </Route>
+
+         <Route exact path="/my-recipes">
+            <MyRecipesList />
          </Route>
 
          <Route exact path="/favorites">
