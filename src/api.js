@@ -63,12 +63,6 @@ class KitchenApi {
       return res.recipe;
    }
 
-   /** Log recipe to daily calories */
-   static async logRecipe(data) {
-      let res = await this.request(`calLogs/log`, data);
-      return res.log;
-   }
-
    /** Update recipe; 
     * need to check currentUser.username === recipe.username
    */
@@ -82,6 +76,21 @@ class KitchenApi {
    */
    static async deleteRecipe(id) {
       await this.request(`recipes/${id}`, "delete")
+   }
+
+   // -----------------------------------------Logs
+   /** Log recipe to daily calories */
+   static async logRecipe(data) {
+      let res = await this.request(`calLogs/log`, data, "post");
+      console.log(res)
+      return res.log;
+   }
+   /** Get log history */
+   static async getLogs(username) {
+      console.log("getLogs api")
+      let res = await this.request(`calLogs/${username}`);
+      console.log(res)
+      return res.logs;
    }
 
    // -----------------------------------------Users

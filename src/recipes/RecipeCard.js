@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react'
 import UserContext from '../auth/UserContext';
 import { useContext } from 'react';
 import { Card, CardTitle, CardSubtitle, Button, ButtonGroup } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import KitchenApi from '../api';
 
 
 
 function RecipeCard({ id, title, cuisine, avgCal }) {
 
-   const { hasFavoritedRecipe, favoriteThisRecipe } = useContext(UserContext)
-   const [favorited, setFavorited] = useState()
-
+   const { currentUser } = useContext(UserContext);
+   const { hasFavoritedRecipe, favoriteThisRecipe } = useContext(UserContext);
+   const [favorited, setFavorited] = useState();
+   const history = useHistory();
 
    useEffect(function favoritedStatus() {
       setFavorited(hasFavoritedRecipe(id))
@@ -24,6 +26,14 @@ function RecipeCard({ id, title, cuisine, avgCal }) {
       setFavorited(true)
    }
 
+   async function handleLogRecipe(e) {
+      let username = currentUser.username
+      let recipeId = id
+
+      await KitchenApi.logRecipe({ username, recipeId });
+      console.debug('handleLogRecipe', id)
+      history.push("/logs");
+   }
 
    return (
       <div className="RecipeCard">
@@ -52,6 +62,7 @@ function RecipeCard({ id, title, cuisine, avgCal }) {
                   outline
                   // color="warning"
                   size="sm"
+                  onClick={handleLogRecipe}
                >
                   log
                </Button>

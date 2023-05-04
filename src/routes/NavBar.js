@@ -77,6 +77,9 @@ function NavBar({ logout }) {
                   </Dropdown >
 
                   <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/logs">Logs</NavLink>
+                  </NavItem>
+                  <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/profile">Profile</NavLink>
                   </NavItem>
                </Nav>
