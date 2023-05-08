@@ -58,23 +58,7 @@ function NavBar({ logout }) {
                      </DropdownMenu>
                   </Dropdown >
 
-                  < Dropdown isOpen={isSearchOpen} toggle={toggleSearch} >
-                     <DropdownToggle color="none" className="navbar-item" caret>
-                        Search by
-                     </DropdownToggle>
-                     <DropdownMenu>
 
-                        <DropdownItem className="navbar-item" tag={Link} to={`/search-cuisine`} >
-                           cuisine
-                        </DropdownItem>
-                        <DropdownItem className="navbar-item" tag={Link} to={`/search-title`} >
-                           title
-                        </DropdownItem>
-                        <DropdownItem className="navbar-item" tag={Link} to={`/search-ingredient`} >
-                           ingredient
-                        </DropdownItem>
-                     </DropdownMenu>
-                  </Dropdown >
 
                   <NavItem className="navbar-item">
                      <NavLink className="nav-link" to="/logs">Logs</NavLink>

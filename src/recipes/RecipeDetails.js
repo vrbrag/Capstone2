@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Link, useHistory } from 'react-router-dom';
 import { Card, CardTitle, Button } from 'reactstrap';
 import KitchenApi from '../api';
 
 function RecipeDetails() {
    const { id } = useParams()
    const [recipe, setRecipe] = useState([]);
+   const history = useHistory();
 
    async function getRecipe() {
       let details = await KitchenApi.getRecipe(id)
@@ -24,15 +26,13 @@ function RecipeDetails() {
    const regex = /(<([^>]+)>)/ig;
    let result = instructions;
 
+   const goBack = () => {
+      history.goBack()
+   };
 
    return (
       <div className="RecipeDetails col-md-8 offset-md-2">
-         {/* <Button
-            className="btn"
-            outline color="warning"
-            size="sm">
-            Back
-         </Button> */}
+
          <Card className="card-body">
             <CardTitle className="card-title">
                {title}
@@ -55,14 +55,25 @@ function RecipeDetails() {
                : (
                   ''
                )}
-
-            <Button
-               className="btn"
-               outline color="warning"
-               size="sm">
-               Find Similar Recipes
-            </Button>
+            <Link to={`/search-variations/${id}`}>
+               <Button
+                  className="btn"
+                  outline color="warning"
+                  size="sm"
+               >
+                  Find Similar Recipes
+               </Button>
+            </Link>
          </Card>
+
+         <Button
+            className="btn"
+            outline color="warning"
+            size="sm"
+            onClick={goBack}
+         >
+            Back
+         </Button>
 
       </div >
 

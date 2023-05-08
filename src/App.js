@@ -89,11 +89,21 @@ function App() {
     setFavoriteIds(new Set([...favoriteIds]));
   }
 
+  // API call to 'FAVORITE' a variation
+  function favoriteThisVariation(recipe) {
+    if (hasFavoritedRecipe(recipe.id)) return;
+    console.log("FavoriteVariation", currentUser.username)
+    const username = currentUser.username;
+    const data = { ...recipe, username }
+    KitchenApi.favoriteVarRecipe(data);
+    setFavoriteIds(new Set([...favoriteIds, recipe.id]));
+  }
+
 
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteThisRecipe, unFavoriteRecipe }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteThisRecipe, favoriteThisVariation, unFavoriteRecipe }}>
           <div className="App">
             <NavBar logout={logout} />
             <Routes login={login} register={register} />
