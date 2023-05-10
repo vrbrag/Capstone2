@@ -34,7 +34,7 @@ function VariationsList() {
 
    return (
       <div className="VariationList">
-         <h1>Variations by {title}</h1>
+         <h1 className="list-title">Variations by {title}</h1>
          <div className="Variation-Dropdown">
             < Dropdown isOpen={isSearchOpen} toggle={toggleSearch} >
                <DropdownToggle color="none" className="navbar-item" caret>

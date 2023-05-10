@@ -1,11 +1,29 @@
-.form-control{
+.Register{
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+.Register .container{
+   width: 100%;
+   /* background: burlywood; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.Register form{
+   /* background: cornsilk; */
+   width: 600px;
+   height: 55px;
+   /* display: flex; */
+}
+/* .form-control{
    padding: 15px;
    margin: 10px 0px
 }
 
 button{
    justify-content: center;
-}
+} */
 
 input.input-error,
 select.input-error {

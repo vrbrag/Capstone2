@@ -36,7 +36,8 @@ function FavoriteCard({ id, title }) {
                   className="btn"
                   outline color="warning"
                   size="sm"
-                  onClick={handleUnFavorite}>Unfavorite
+                  onClick={handleUnFavorite}>
+                  {saved ? "unfavorite" : "favorite"}
                </Button>
                <Button
                   // className="btn btn-success font-weight-bold mr-3"

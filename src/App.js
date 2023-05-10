@@ -86,7 +86,9 @@ function App() {
   function unFavoriteRecipe(id) {
     if (!hasFavoritedRecipe(id)) return
     KitchenApi.removeFavoriteRecipe(id);
-    setFavoriteIds(new Set([...favoriteIds]));
+    // const arr= new Array of favorite ids
+    // if( id = !id)  arr.push(id)
+    setFavoriteIds(new Set([favoriteIds]));
   }
 
   // API call to 'FAVORITE' a variation

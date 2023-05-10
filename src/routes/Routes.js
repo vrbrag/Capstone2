@@ -11,6 +11,8 @@ import MyRecipesList from '../recipes/MyRecipesList';
 import DailyLog from '../logs/DailyLog';
 import VariationsList from '../variations/VariationsList';
 import VariationDetails from '../variations/VariationDetails';
+import Profile from './Profile';
+import ProfileEdit from './ProfileEdit';
 
 function Routes({ login, register }) {
    return (
@@ -57,6 +59,14 @@ function Routes({ login, register }) {
 
          <Route exact path="/variation/:id">
             <VariationDetails />
+         </Route>
+
+         <Route exact path="/profile">
+            <Profile />
+         </Route>
+
+         <Route exact path="/profile-edit">
+            <ProfileEdit />
          </Route>
 
       </div>
