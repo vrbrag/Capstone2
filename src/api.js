@@ -158,9 +158,8 @@ class KitchenApi {
    /** Unsave/Remove favorited recipe 
     * verify currentUser.username === recipe.username
    */
-   static async removeFavoriteRecipe(id) {
-      let res = await this.request(`favorites/${id}`, "post")
-      return res.id;
+   static async removeFavoriteRecipe(username, recipeId) {
+      await this.request(`favorites/${username}/${recipeId}`, {}, "delete")
    }
 
 

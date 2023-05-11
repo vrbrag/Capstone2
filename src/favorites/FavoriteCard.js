@@ -17,10 +17,8 @@ function FavoriteCard({ id, title }) {
    }, [id, hasFavoritedRecipe])
 
    async function handleUnFavorite(e) {
-      // if (!hasFavoritedRecipe(id)) return
       console.debug('handleUnFavorite')
       unFavoriteRecipe(id)
-      // console.log(hasFavoritedRecipe(id))
    }
 
    return (

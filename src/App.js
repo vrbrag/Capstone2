@@ -83,12 +83,20 @@ function App() {
     setFavoriteIds(new Set([...favoriteIds, id]));
   }
   // API call to 'UNfavorite' a recipe
-  function unFavoriteRecipe(id) {
-    if (!hasFavoritedRecipe(id)) return
-    KitchenApi.removeFavoriteRecipe(id);
+  function unFavoriteRecipe(recipeId) {
+    if (!hasFavoritedRecipe(recipeId)) return
+    console.log("unFavoriteRecipe", currentUser.username)
+    KitchenApi.removeFavoriteRecipe(currentUser.username, recipeId);
     // const arr= new Array of favorite ids
-    // if( id = !id)  arr.push(id)
-    setFavoriteIds(new Set([favoriteIds]));
+    // if( id !== id)  arr.push(id)
+
+    const arr = new Array([]);
+    favoriteIds.forEach(element => {
+      if (element !== recipeId) {
+        arr.push(element)
+      }
+    })
+    setFavoriteIds(new Set([arr]));
   }
 
   // API call to 'FAVORITE' a variation

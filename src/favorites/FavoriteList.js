@@ -14,13 +14,13 @@ function FavoriteList() {
 
    async function getItems(currentUser) {
       let f = await KitchenApi.getAllFavorites(currentUser.username);
-      console.log("favorites=", f)
+      // console.log("favorites=", f)
       setFavorites(f)
    }
 
    useEffect(() => {
       getItems(currentUser);
-   }, []);
+   }, favorites);
 
 
 
@@ -28,10 +28,10 @@ function FavoriteList() {
    return (
       <div className="FavoriteList">
          <h1 className="list-title">favorites</h1>
-
+         {/* {favorites} */}
          <div className="FavoriteList-list">
             {favorites.length ? favorites.map(f => (
-               <FavoriteCard
+               < FavoriteCard
                   key={f.recipe_id}
                   id={f.recipe_id}
                   username={f.username}
