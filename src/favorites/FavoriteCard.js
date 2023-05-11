@@ -8,7 +8,7 @@ import UserContext from '../auth/UserContext';
 
 function FavoriteCard({ id, title }) {
 
-   const { hasFavoritedRecipe, unFavoriteRecipe } = useContext(UserContext)
+   const { hasFavoritedRecipe, unFavoriteRecipe, favoriteThisRecipe } = useContext(UserContext)
    const [saved, setSaved] = useState()
 
 
@@ -19,24 +19,42 @@ function FavoriteCard({ id, title }) {
    async function handleUnFavorite(e) {
       console.debug('handleUnFavorite')
       unFavoriteRecipe(id)
+      setSaved(false)
+   }
+
+   async function handleFavorite(e) {
+      if (hasFavoritedRecipe(id)) return
+      console.debug('handleFavorite')
+      favoriteThisRecipe(id)
+      setSaved(true)
    }
 
    return (
       <div className="FavoriteCard">
-         {saved}
          <Card className="card-body">
             <Link className="FavoriteCard" to={`/recipe/${id}`}>
                <CardTitle className="card-title">{title}</CardTitle>
             </Link>
             <ButtonGroup>
-               <Button
+               {saved ? (<Button
                   // className="btn btn-success font-weight-bold mr-3"
                   className="btn"
                   outline color="warning"
                   size="sm"
                   onClick={handleUnFavorite}>
-                  {saved ? "unfavorite" : "favorite"}
-               </Button>
+                  unfavorite
+               </Button>)
+                  : (
+                     <Button
+                        // className="btn btn-success font-weight-bold mr-3"
+                        className="btn"
+                        outline color="warning"
+                        size="sm"
+                        onClick={handleFavorite}>
+                        favorite
+                     </Button>
+                  )}
+
                <Button
                   // className="btn btn-success font-weight-bold mr-3"
                   className="btn"

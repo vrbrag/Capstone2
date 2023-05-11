@@ -90,13 +90,13 @@ function App() {
     // const arr= new Array of favorite ids
     // if( id !== id)  arr.push(id)
 
-    const arr = new Array([]);
+    const arr = new Set([]);
     favoriteIds.forEach(element => {
       if (element !== recipeId) {
-        arr.push(element)
+        arr.add(element)
       }
     })
-    setFavoriteIds(new Set([arr]));
+    setFavoriteIds(arr);
   }
 
   // API call to 'FAVORITE' a variation
@@ -113,7 +113,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteThisRecipe, favoriteThisVariation, unFavoriteRecipe }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasFavoritedRecipe, favoriteThisRecipe, favoriteThisVariation, unFavoriteRecipe, favoriteIds }}>
           <div className="App">
             <NavBar logout={logout} />
             <Routes login={login} register={register} />
