@@ -1,33 +1,34 @@
 import React, { useState, useContext } from 'react'
 import UserContext from '../auth/UserContext';
+import { useHistory } from 'react-router-dom'
 import { Card, CardBody } from 'reactstrap'
 import Alert from '../Alert'
 import KitchenApi from '../api';
 
 function ProfileEdit() {
 
-   const { currentUser, setCurrentUser } = useContext(UserContext)
-   console.debug(
-      "Profile",
-      "currentUser=", currentUser
-   )
+   const { currentUser, setCurrentUser } = useContext(UserContext);
+   const history = useHistory();
+
+
    const [formData, setFormData] = useState({
       firstName: currentUser.firstName,
       lastName: currentUser.lastName,
       email: currentUser.email,
-      username: currentUser.username,
-      password: "",
+      // username: currentUser.username,
       age: currentUser.age,
       weight: currentUser.weight,
       height: currentUser.height,
       gender: currentUser.gender,
       pal: currentUser.pal,
       goalWeight: currentUser.goalWeight,
+      password: "",
    })
    const [saveSuccess, setSaveSuccess] = useState(false)
    const [formErrors, setFormErrors] = useState([])
+
    console.debug(
-      "Profile",
+      "Edit Profile",
       "currentUser=", currentUser,
       "formData=", formData,
       "formErrors=", formErrors,
@@ -47,19 +48,21 @@ function ProfileEdit() {
          lastName: formData.lastName,
          email: formData.email,
          // username: currentUser.username,
-         password: formData.password,
          age: formData.age,
          weight: formData.weight,
          height: formData.height,
          gender: formData.gender,
          pal: formData.pal,
          goalWeight: formData.goalWeight,
+         password: formData.password,
       }
 
-      let username = formData.username;
+      profileData.pal = parseFloat(profileData.pal)
+      let username = currentUser.username;
       let updatedData;
       try {
          updatedData = await KitchenApi.updateProfile(username, profileData)
+         // console.log("UPDATED Data", updatedData)
       } catch (e) {
          setFormErrors(e)
          return
@@ -69,6 +72,7 @@ function ProfileEdit() {
       setFormErrors([])
       setSaveSuccess(true)
       setCurrentUser(updatedData)
+      history.push("/profile");
    }
 
    return (
@@ -79,16 +83,16 @@ function ProfileEdit() {
             {/* <Card className="card">
                <CardBody className="card-body"> */}
             <form>
-               <div className="form-group">
+               {/* <div className="form-group">
                   <label>Username</label>
-                  {/* <p>{formData.username}</p> */}
+                
                   <input
                      className="form-control"
                      name="username"
                      value={formData.username}
                      onChange={handleChange}
                   />
-               </div>
+               </div> */}
                <div className="form-group">
                   <label>First Name</label>
                   <input
@@ -169,12 +173,12 @@ function ProfileEdit() {
                      onChange={handleChange}
                      required
                   >
-                     <option value={1.2}>Little or No exercise</option>
-                     <option value={1.4}>Light exercise 1-2 times a week</option>
-                     <option value={1.6}>Moderate exercise 2-3 times/week</option>
-                     <option value={1.75}>Hard exercise 3-5 times/week</option>
-                     <option value={2.0}>I have a physical job or perform hard exercise 6-7 times/week</option>
-                     <option value={2.4}>Professional Athlete</option>
+                     <option value="1.2">Little or No exercise</option>
+                     <option value="1.4">Light exercise 1-2 times a week</option>
+                     <option value="1.6">Moderate exercise 2-3 times/week</option>
+                     <option value="1.75">Hard exercise 3-5 times/week</option>
+                     <option value="2.0">I have a physical job or perform hard exercise 6-7 times/week</option>
+                     <option value="2.4">Professional Athlete</option>
                   </select>
                </div>
                <div className="form-group">

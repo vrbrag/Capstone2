@@ -1,67 +1,89 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'
+import UserContext from '../auth/UserContext';
 import { registerSchema } from '../schemas/registerSchema';
-// import Alert from '../Alert';
+import Alert from '../Alert';
 import { useFormik } from 'formik';
-import './Register.css'
+// import './ProfileEdit.css'
 import { Button } from 'reactstrap';
+import KitchenApi from '../api';
 
-function NewRegister({ register }) {
+function NewProfileEdit() {
 
+   const { currentUser, setCurrentUser } = useContext(UserContext)
    const [formErrors, setFormErrors] = useState([]);
-
+   const [saveSuccess, setSaveSuccess] = useState(false)
    const history = useHistory();
+
 
    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
       initialValues: {
-         username: "",
+         firstName: currentUser.firstName,
+         lastName: currentUser.lastName,
+         email: currentUser.email,
+         // username: currentUser.username,
+         age: currentUser.age,
+         weight: currentUser.weight,
+         height: currentUser.height,
+         gender: currentUser.gender,
+         pal: currentUser.pal,
+         goalWeight: currentUser.goalWeight,
          password: "",
-         firstName: "",
-         lastName: "",
-         email: "",
-         age: "",
-         weight: "",
-         height: "",
-         gender: "",
-         pal: 0,
-         goalWeight: "",
       },
       validationSchema: registerSchema,
       onSubmit
-   })
+   });
 
    async function onSubmit(evt) {
       // evt.preventDefault();
+      console.log("ON SUBMIT!!!!!!!!")
       console.log(typeof (values.pal));
-      values.pal = parseInt(values.pal)
+      values.pal = parseFloat(values.pal)
       console.log(values.pal, typeof (values.pal));
-      let result = await register(values);
-      if (result.success) {
-         history.push("/");
-      } else {
-         setFormErrors(result.errors)
+
+      let username = values.username;
+      let updatedData;
+      try {
+         updatedData = await KitchenApi.updateProfile(username, values);
+
+
+      } catch (updatedData) {
+         setFormErrors(updatedData.errors)
+         return
+      }
+
+
+
+      // setFormData(data => ({ ...data, password: "" }))
+      setFormErrors([])
+      setSaveSuccess(true)
+      setCurrentUser(updatedData)
+
+      if (updatedData.success) {
+         history.push("/profile");
       }
    }
 
    console.debug(
-      "RegisterForm",
-      console.log("PAL typeof=", typeof (parseInt(values.pal))),
-      "form", values
+      "Profile Edit",
+      "currentUser=", currentUser,
+      "formValues=", values,
+      "formErrors=", formErrors,
+      "saveSuccess=", saveSuccess
    );
 
-
    return (
-      <div className="Register">
-         <h4 className="form-title">register</h4>
-         <div className="container">
+      <div className="ProfileEdit" >
+         <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <h1 className="list-title">edit profile</h1>
 
-            {/* <div className="card">
-               <div className="card-body"> */}
-            <form onSubmit={handleSubmit} >
-
-               <div className="form-group">
+            {/* <Card className="card">
+               <CardBody className="card-body"> */}
+            <form onSubmit={handleSubmit}>
+               {/* <div className="form-group">
+                  <label>Username</label>
+                  
                   <input
-
                      id="username"
                      type="text"
                      name="username"
@@ -73,22 +95,9 @@ function NewRegister({ register }) {
                      className={errors.username && touched.username ? "form-control input-error" : "form-control"}
                   />
                   {errors.username && touched.username && <p className="error">{errors.username}</p>}
-               </div>
+               </div> */}
                <div className="form-group">
-                  <input
-
-                     id="password"
-                     type="password"
-                     name="password"
-                     placeholder="Password"
-                     value={values.password}
-                     onChange={handleChange}
-                     onBlur={handleBlur}
-                     className={errors.password && touched.password ? "form-control input-error" : "form-control"}
-                  />
-                  {errors.password && touched.password && <p className="error">{errors.password}</p>}
-               </div>
-               <div className="form-group">
+                  <label>First Name</label>
                   <input
 
                      id="firstName"
@@ -103,6 +112,7 @@ function NewRegister({ register }) {
                   {errors.firstName && touched.firstName && <p className="error">{errors.firstName}</p>}
                </div>
                <div className="form-group">
+                  <label>Last Name</label>
                   <input
 
                      id="lastName"
@@ -117,6 +127,7 @@ function NewRegister({ register }) {
                   {errors.lastName && touched.lastName && <p className="error">{errors.lastName}</p>}
                </div>
                <div className="form-group">
+                  <label>Email</label>
                   <input
 
                      id="email"
@@ -131,6 +142,7 @@ function NewRegister({ register }) {
                   {errors.email && touched.email && <p className="error">{errors.email}</p>}
                </div>
                <div className="form-group">
+                  <label>Age</label>
                   <input
 
                      id="age"
@@ -145,6 +157,7 @@ function NewRegister({ register }) {
                   {errors.age && touched.age && <p className="error">{errors.age}</p>}
                </div>
                <div className="form-group">
+                  <label>Weight</label>
                   <input
 
                      id="weight"
@@ -159,6 +172,7 @@ function NewRegister({ register }) {
                   {errors.weight && touched.weight && <p className="error">{errors.weight}</p>}
                </div>
                <div className="form-group">
+                  <label>Height</label>
                   <input
 
                      id="height"
@@ -173,6 +187,7 @@ function NewRegister({ register }) {
                   {errors.height && touched.height && <p className="error">{errors.height}</p>}
                </div>
                <div className="form-group">
+                  <label>Gender</label>
                   <select
 
                      id="gender"
@@ -183,7 +198,7 @@ function NewRegister({ register }) {
                      onBlur={handleBlur}
                      className={errors.gender && touched.gender ? "form-control input-error" : "form-control"}
                   >
-                     <option>Gender...</option>
+                     {/* <option>Gender...</option> */}
                      <option value="male">Male</option>
                      <option value="female">Female</option>
                   </select>
@@ -191,7 +206,7 @@ function NewRegister({ register }) {
                   {errors.gender && touched.gender && <p className="error">{errors.gender}</p>}
                </div>
                <div className="form-group">
-
+                  <label>Physical Activity Level</label>
                   <select
                      id="pal"
                      type="number"
@@ -201,7 +216,7 @@ function NewRegister({ register }) {
                      onBlur={handleBlur}
                      className={errors.pal && touched.pal ? "form-control input-error" : "form-control"}
                   >
-                     <option>Physical Activity Level...</option>
+                     {/* <option>Physical Activity Level...</option> */}
                      <option value="1.2">Little or No exercise</option>
                      <option value="1.4">Light exercise 1-2 times a week</option>
                      <option value="1.6">Moderate exercise 2-3 times/week</option>
@@ -213,6 +228,7 @@ function NewRegister({ register }) {
                   {errors.pal && touched.pal && <p className="error">{errors.pal}</p>}
                </div>
                <div className="form-group">
+                  <label>Goal Weight</label>
                   <select
 
                      id="goalWeight"
@@ -221,10 +237,9 @@ function NewRegister({ register }) {
                      value={values.goalWeight}
                      onChange={handleChange}
                      onBlur={handleBlur}
-                     className="form-control"
                      className={errors.goalWeight && touched.goalWeight ? "form-control input-error" : "form-control"}
                   >
-                     <option>Goal Weight...</option>
+                     {/* <option>Goal Weight...</option> */}
                      <option value="lose">Lose</option>
                      <option value="maintain">Maintain</option>
                      <option value="gain">Gain</option>
@@ -232,11 +247,23 @@ function NewRegister({ register }) {
 
                   {errors.goalWeight && touched.goalWeight && <p className="error">{errors.goalWeight}</p>}
                </div>
-
+               <div className="form-group">
+                  <label>Confirm password to save changes:</label>
+                  <input
+                     className="form-control"
+                     name="password"
+                     value={values.password}
+                     onChange={handleChange}
+                  />
+               </div>
                {/* {formErrors.length
-                        ? <Alert type="danger" messages={formErrors} />
-                        : null
-                     } */}
+                     ? <Alert type="danger" messages={formErrors} />
+                     : null} */}
+
+               {saveSuccess
+                  ?
+                  <Alert type="success" messages={["Updated successfully."]} />
+                  : null}
 
                <Button
                   className="btn"
@@ -244,16 +271,14 @@ function NewRegister({ register }) {
                   color="warning"
                   size="sm"
                   type="submit">
-                  register
+                  save changes
                </Button>
-
-            </form >
-            {/* </div>
-            </div> */}
-         </div >
+            </form>
+            {/* </CardBody>
+            </Card> */}
+         </div>
       </div>
-
    )
-};
+}
 
-export default NewRegister;
+export default NewProfileEdit;
