@@ -3,8 +3,8 @@ import UserContext from '../auth/UserContext';
 import { useContext } from 'react';
 import { Card, CardTitle, ButtonGroup, Button } from 'reactstrap';
 import { useHistory, Link } from 'react-router-dom';
-import { last } from 'lodash';
 import KitchenApi from '../api';
+import UserTable from './UserTable';
 
 function Profile() {
 
@@ -19,19 +19,35 @@ function Profile() {
    return (
       <div className="Profile">
          <h1 className="list-title">profile</h1>
-         <Card className="card-body">
+         {/* <Card className="card-body">
             <CardTitle className="card-title">
                {username}
-            </CardTitle>
-            <h2>{firstName} {lastName}</h2>
-            <h3>Daily Goal Calories: {dailyCal}</h3>
-            <h4>Todays Total Calories: </h4>
+            </CardTitle> */}
+         <Card className="card-body">
+            <UserTable />
+         </Card>
+
+         {/* <div className="container">
+            <p>username: {username}</p>
+            <p>first: {firstName}</p>
+            <p>last: {lastName}</p>
+            <p>email: {email}</p>
+            <p>age: {age}</p>
+            <p>weight: {weight}lbs.</p>
+            <p>height: {height}in.</p>
+            <p>gender: {gender}</p>
+            <p>activity:{pal}</p>
+            <p>goal: {goalWeight}</p>
+            <p>daily cal: {dailyCal}kcal</p>
+            <h4>Todays Total Calories: {logs}</h4>
             <div>
                <ul>
 
                </ul>
             </div>
-         </Card>
+         </div> */}
+
+         {/* </Card> */}
          <Link to={`/profile-edit`}>
             <Button
                className="btn"
