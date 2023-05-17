@@ -66,12 +66,18 @@ function RecipeDetails() {
                            Ingredients
                         </th>
                         <td>
-                           {ingredients}
+                           <ul>
+                              {ingredients ? ingredients.map((ingredient, index) => (
+                                 <li key={index}>{ingredient} </li>
+                              ))
+                                 : ('')
+                              }
+                           </ul>
                         </td>
                      </tr>
                      {instructions ? (<tr>
                         <th scope="row">
-                           Instructions:
+                           Instructions
                         </th>
                         <td>
                            {result = result.replace(regex, '')}
@@ -82,7 +88,7 @@ function RecipeDetails() {
                         )}
                      {notes ? (<tr>
                         <th scope="row">
-                           Notes:
+                           Notes
                         </th>
                         <td>
                            {notes}
@@ -93,7 +99,7 @@ function RecipeDetails() {
                         )}
                      {avgCal ? (<tr>
                         <th scope="row">
-                           Avg Cal:
+                           Avg Cal
                         </th>
                         <td>
                            {avgCal} cal

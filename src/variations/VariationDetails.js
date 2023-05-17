@@ -29,8 +29,8 @@ function VariationDetails() {
       getRecipe()
    }, [id]);
 
-   // const { title, cuisine, ingredients, instructions, avg_cal } = recipe;
 
+   const ingredients = recipe.ingredients;
 
    // Favorite
    useEffect(function favoritedStatus() {
@@ -98,7 +98,13 @@ function VariationDetails() {
                            Ingredients
                         </th>
                         <td>
-                           {recipe.ingredients}
+                           <ul>
+                              {ingredients ? ingredients.map((ingredient, index) => (
+                                 <li key={index}>{ingredient} </li>
+                              ))
+                                 : ('')
+                              }
+                           </ul>
                         </td>
                      </tr>
                      {recipe.instructions ? (<tr>
@@ -115,7 +121,7 @@ function VariationDetails() {
 
                      {recipe.avg_cal ? (<tr>
                         <th scope="row">
-                           Avg Cal:
+                           Avg Cal
                         </th>
                         <td>
                            {recipe.avg_cal} cal

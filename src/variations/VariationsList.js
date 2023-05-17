@@ -27,6 +27,7 @@ function VariationsList() {
       setTitle("Ingredients")
    }
 
+   console.log("VariationList variations=", variations)
    // useEffect(() => {
    //    getByCuisine();
    //    getByIngredients();
@@ -55,14 +56,17 @@ function VariationsList() {
 
 
          <div className="VariationsList-list">
-            {variations.map(v => (
+            {variations.length ? variations.map(v => (
                <VariationCard
                   key={v.id}
                   id={v.id}
                   title={v.title}
                   image={v.image}
                />
-            ))}
+            ))
+               : (
+                  ''
+               )}
          </div>
 
       </div>
