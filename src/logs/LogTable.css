@@ -1,0 +1,23 @@
+.LogTable-listRecipes {
+   max-width: 20%;
+}
+th, td {
+   border: none;
+}
+
+.LogTable-dailyTotal {
+   text-align: right;
+}
+
+
+.LogTable-header {
+   border-bottom: 1px solid;
+   font-size: larger;
+}
+.LogTable-totalRow {
+   border-top: 1px solid;
+}
+
+td.LogTable-listRecipes{
+   width: 574px
+}

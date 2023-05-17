@@ -34,8 +34,8 @@ function DailyLog() {
    return (
       <div className="DailyLog">
          <h1 className="list-title">my logs</h1>
-         <div>
-            {logs.map(l => (
+         <div className="DailyLog-list">
+            {logs.length ? logs.map(l => (
                <DailyLogCard
                   key={l.id}
                   id={l.id}
@@ -44,7 +44,10 @@ function DailyLog() {
                   date={l.date}
                   isGoal={l.isGoal}
                />
-            ))}
+            ))
+               : (
+                  <p>No logs yet!</p>
+               )}
          </div>
       </div>
    )

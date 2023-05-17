@@ -3,6 +3,8 @@ import KitchenApi from '../api';
 import UserContext from '../auth/UserContext';
 import { Card, CardTitle, CardSubtitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Table } from 'reactstrap';
+import './RecipeLogInfo.css'
 
 function RecipeLogInfo({ id }) {
 
@@ -23,12 +25,22 @@ function RecipeLogInfo({ id }) {
    }, []);
 
    return (
-      <div>
-         <Link to={`/recipe/${recipe.id}`}>
-            <CardTitle className="card-title">{recipe.title}</CardTitle>
-         </Link>
-         <CardSubtitle>{recipe.avgCal} cal</CardSubtitle>
-      </div>
+      <div className="RecipeLogInfo">
+         <Table className="RecipeLogInfo-table">
+            <tbody>
+               <tr>
+                  <th scope="row" className="RecipeLogInfo-table-title">
+                     <Link to={`/recipe/${recipe.id}`}>
+                        {recipe.title}
+                     </Link>
+                  </th>
+                  <td className="RecipeLogInfo-table-cal">
+                     {recipe.avgCal} cal
+                  </td>
+               </tr>
+            </tbody>
+         </Table>
+      </div >
    )
 }
 

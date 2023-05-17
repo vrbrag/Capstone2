@@ -1,0 +1,18 @@
+.CreateRecipe{
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+.CreateRecipe .container{
+   width: 100%;
+   /* background: burlywood; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.CreateRecipe form{
+   /* background: cornsilk; */
+   width: 400px;
+   height: 55px;
+   /* display: flex; */
+}

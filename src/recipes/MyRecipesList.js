@@ -33,7 +33,7 @@ function MyRecipesList() {
       <div className="MyRecipeList">
          <h1 className="list-title">my recipes</h1>
          <div className="MyRecipeList-list">
-            {recipes.map(r => (
+            {recipes.length ? recipes.map(r => (
                <RecipeCard
                   key={r.id}
                   id={r.id}
@@ -45,7 +45,9 @@ function MyRecipesList() {
                   notes={r.notes}
                   username={r.username}
                />
-            ))}
+            )) : (
+               <p>No recipes created yet!</p>
+            )}
          </div>
       </div>
    )
