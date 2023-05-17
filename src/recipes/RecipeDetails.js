@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { Link, useHistory } from 'react-router-dom';
 import { Card, CardTitle, Button } from 'reactstrap';
 import KitchenApi from '../api';
+import { Table } from 'reactstrap';
 
 function RecipeDetails() {
    const { id } = useParams()
@@ -20,7 +21,7 @@ function RecipeDetails() {
       getRecipe()
    }, [id])
 
-   const { title, cuisine, ingredients, instructions, avg_cal, notes } = recipe
+   const { title, cuisine, ingredients, instructions, avgCal, notes } = recipe
 
    // remove html tags on instructions 
    const regex = /(<([^>]+)>)/ig;
@@ -34,36 +35,80 @@ function RecipeDetails() {
       <div className="RecipeDetails col-md-8 offset-md-2">
 
          <Card className="card-body">
-            <CardTitle className="card-title">
+            <CardTitle className="card-detail-title">
                {title}
             </CardTitle>
-            <h5>{cuisine}</h5>
-            <ul>
-               Ingredients: {ingredients}
-            </ul>
-            {instructions ? (<p>Instructions: {result = result.replace(regex, '')}</p>)
-               : (
-                  ''
-               )}
+            <div>
+               <Table>
+                  <thead>
+                     <tr>
+                        <th>
 
-            {avg_cal ? (<p>Average Calories: {avg_cal}</p>)
-               : (
-                  ''
-               )}
+                        </th>
 
-            {notes ? (<p>Notes: {notes}</p>)
-               : (
-                  ''
-               )}
-            <Link to={`/search-variations/${id}`}>
-               <Button
-                  className="btn"
-                  outline color="warning"
-                  size="sm"
-               >
-                  Find Similar Recipes
-               </Button>
-            </Link>
+                     </tr>
+                  </thead>
+                  <tbody className="recipecard-body">
+                     {cuisine ? (<tr>
+                        <th scope="row">
+                           Cuisine
+                        </th>
+                        <td>
+                           {cuisine}
+                        </td>
+                     </tr>)
+                        : (
+                           ''
+                        )}
+
+                     <tr>
+                        <th scope="row">
+                           Ingredients
+                        </th>
+                        <td>
+                           {ingredients}
+                        </td>
+                     </tr>
+                     {instructions ? (<tr>
+                        <th scope="row">
+                           Instructions:
+                        </th>
+                        <td>
+                           {result = result.replace(regex, '')}
+                        </td>
+                     </tr>)
+                        : (
+                           ''
+                        )}
+                     {notes ? (<tr>
+                        <th scope="row">
+                           Notes:
+                        </th>
+                        <td>
+                           {notes}
+                        </td>
+                     </tr>)
+                        : (
+                           ''
+                        )}
+                     {avgCal ? (<tr>
+                        <th scope="row">
+                           Avg Cal:
+                        </th>
+                        <td>
+                           {avgCal} cal
+                        </td>
+                     </tr>)
+                        : (
+                           ''
+                        )}
+                     <tr>
+
+                     </tr>
+                  </tbody>
+               </Table>
+            </div>
+
          </Card>
 
          <Button
@@ -74,6 +119,17 @@ function RecipeDetails() {
          >
             Back
          </Button>
+
+         <Link to={`/search-variations/${id}`}>
+            <Button
+               className="btn"
+               outline color="warning"
+               size="sm"
+            >
+               Find Similar Recipes
+            </Button>
+         </Link>
+
 
       </div >
 
