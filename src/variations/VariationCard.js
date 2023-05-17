@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import UserContext from '../auth/UserContext';
-import { useContext } from 'react';
-import { Card, CardTitle, CardSubtitle, Button, ButtonGroup } from 'reactstrap';
-import { useHistory, Link } from 'react-router-dom';
-import KitchenApi from '../api';
+import React from 'react'
+import { Card, CardTitle } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function VariationCard({ id, title, image }) {
-
-
    return (
       <div>
          <div className="VariationCard">
@@ -19,8 +14,6 @@ function VariationCard({ id, title, image }) {
                   alt={title}
                   src={image}
                />
-
-
             </Card>
          </div>
       </div>

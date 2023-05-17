@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import UserContext from '../auth/UserContext';
 import { useContext } from 'react';
-import { Card, CardTitle, CardSubtitle, Button, ButtonGroup } from 'reactstrap';
+import { Card, CardTitle, Button, ButtonGroup } from 'reactstrap';
 import { useHistory, Link } from 'react-router-dom';
 import KitchenApi from '../api';
-
+import { Table } from 'reactstrap';
 
 
 function RecipeCard({ id, title, cuisine, avgCal }) {
@@ -38,35 +38,72 @@ function RecipeCard({ id, title, cuisine, avgCal }) {
    return (
       <div className="RecipeCard">
          <Card className="card-body">
-            <Link to={`/recipe/${id}`}>
-               <CardTitle className="card-title">{title}</CardTitle>
-            </Link>
-            <CardSubtitle>{cuisine}</CardSubtitle>
-            <CardSubtitle>{avgCal} cal</CardSubtitle>
+            <div>
+               <Table>
+                  <thead>
+                     <tr>
+                        <th>
+                           <Link to={`/recipe/${id}`}>
 
-            <ButtonGroup>
-               <Button
-                  // className="btn btn-warning .col-sm .col-sm-offset-1"
-                  className="btn"
-                  outline
-                  // color="warning"
-                  size="sm"
-                  onClick={handleFavorite}
-                  disabled={favorited}
-               >
-                  {favorited ? "favorited" : "favorite"}
-               </Button>{' '}
-               <Button
-                  // className="btn btn-warning font-weight-bold mr-3"
-                  className="btn"
-                  outline
-                  // color="warning"
-                  size="sm"
-                  onClick={handleLogRecipe}
-               >
-                  log
-               </Button>
-            </ButtonGroup>
+                              <CardTitle className="card-title">{title}</CardTitle>
+
+
+                           </Link>
+                        </th>
+                        <td>
+
+                        </td>
+                        <td className="fav-log-btns">
+                           <ButtonGroup>
+                              <Button
+                                 className="btn"
+                                 outline
+                                 size="sm"
+                                 onClick={handleFavorite}
+                                 disabled={favorited}
+                              >
+                                 {favorited ? "favorited" : "favorite"}
+                              </Button>{' '}
+                              <Button
+                                 className="btn"
+                                 outline
+                                 size="sm"
+                                 onClick={handleLogRecipe}
+                              >
+                                 log
+                              </Button>
+                           </ButtonGroup>
+
+                        </td>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {cuisine ? (<tr className="recipecard-body">
+                        <th scope="row">
+                           <b>Cuisine:</b>   <i>{cuisine}</i>
+                        </th>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                     </tr>)
+                        : ""}
+                     <tr className="recipecard-body">
+                        <th scope="row">
+                           <b>Avg Cal:</b>  <i>{avgCal} cal</i>
+                        </th>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                     </tr>
+                  </tbody>
+               </Table>
+            </div>
          </Card>
       </div>
    )

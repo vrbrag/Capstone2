@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useState, } from 'react';
 import { useParams } from 'react-router';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 // import { Link } from "react-router-dom";

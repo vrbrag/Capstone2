@@ -1,252 +1,236 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
-// import NumericInput from 'react-numeric-input';
-// import Alert from '../Alert'
+import { registerSchema } from '../schemas/registerSchema';
+// import Alert from '../Alert';
+import { useFormik } from 'formik';
 import './Register.css'
+import { Button } from 'reactstrap';
 
 function Register({ register }) {
-   const [formData, setFormData] = useState({
-      username: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      age: "",
-      weight: "",
-      height: "",
-      gender: "male",
-      pal: 1.2,
-      goalWeight: "lose",
-   });
+
    const [formErrors, setFormErrors] = useState([]);
 
    const history = useHistory();
 
-   console.debug(
-      "RegisterForm",
-      "register=", typeof register,
-      "formData=", formData
-   );
+   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+      initialValues: {
+         username: "",
+         password: "",
+         firstName: "",
+         lastName: "",
+         email: "",
+         age: "",
+         weight: "",
+         height: "",
+         gender: "",
+         pal: 0,
+         goalWeight: "",
+      },
+      validationSchema: registerSchema,
+      onSubmit
+   })
 
-   async function handleSubmit(evt) {
-      evt.preventDefault();
-      let result = await register(formData);
+   async function onSubmit(evt) {
+      // evt.preventDefault();
+      console.log(typeof (values.pal));
+      values.pal = parseInt(values.pal)
+      console.log(values.pal, typeof (values.pal));
+      let result = await register(values);
       if (result.success) {
          history.push("/");
       } else {
          setFormErrors(result.errors)
       }
-   };
+   }
 
-   function handleChange(e) {
-      const { name, value } = e.target
-      setFormData(field => ({ ...field, [name]: value }))
-   };
+   console.debug(
+      "RegisterForm",
+      console.log("PAL typeof=", typeof (parseInt(values.pal))),
+      "form", values
+   );
+
 
    return (
       <div className="Register">
-         <h4 className="form-title">Register</h4>
+         <h4 className="form-title">register</h4>
          <div className="container">
 
             {/* <div className="card">
                <div className="card-body"> */}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
+
                <div className="form-group">
-                  {/* <label>Username</label> */}
                   <input
-                     className="form-control"
+
                      id="username"
                      type="text"
                      name="username"
                      placeholder="Username"
-                     value={formData.username}
+                     value={values.username}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     // className="form-control"
+                     className={errors.username && touched.username ? "form-control input-error" : "form-control"}
                   />
+                  {errors.username && touched.username && <p className="error">{errors.username}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Password</label> */}
                   <input
-                     className="form-control"
+
                      id="password"
-                     type="text"
+                     type="password"
                      name="password"
                      placeholder="Password"
-                     value={formData.password}
+                     value={values.password}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.password && touched.password ? "form-control input-error" : "form-control"}
                   />
+                  {errors.password && touched.password && <p className="error">{errors.password}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>First Name</label> */}
                   <input
-                     className="form-control"
+
                      id="firstName"
                      type="text"
                      name="firstName"
                      placeholder="First Name"
-                     value={formData.firstName}
+                     value={values.firstName}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.firstName && touched.firstName ? "form-control input-error " : "form-control"}
                   />
+                  {errors.firstName && touched.firstName && <p className="error">{errors.firstName}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Last Name</label> */}
                   <input
-                     className="form-control"
+
                      id="lastName"
                      type="text"
                      name="lastName"
                      placeholder="Last Name"
-                     value={formData.lastName}
+                     value={values.lastName}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.lastName && touched.lastName ? "form-control input-error" : "form-control"}
                   />
+                  {errors.lastName && touched.lastName && <p className="error">{errors.lastName}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Email</label> */}
                   <input
-                     className="form-control"
+
                      id="email"
                      type="text"
                      name="email"
                      placeholder="Email"
-                     value={formData.email}
+                     value={values.email}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.email && touched.email ? "form-control input-error" : "form-control"}
                   />
+                  {errors.email && touched.email && <p className="error">{errors.email}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Age</label> */}
                   <input
-                     className="form-control"
+
                      id="age"
                      type="number"
-                     pattern="[0-9]*"
                      name="age"
                      placeholder="Age"
-                     value={formData.age}
+                     value={values.age}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.age && touched.age ? "form-control input-error" : "form-control"}
                   />
+                  {errors.age && touched.age && <p className="error">{errors.age}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Weight</label> */}
                   <input
-                     className="form-control"
+
                      id="weight"
                      type="number"
-                     pattern="[0-9]*"
                      name="weight"
-                     placeholder="Weight"
-                     value={formData.weight}
+                     placeholder="Weight (lbs)"
+                     value={values.weight}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.weight && touched.weight ? "form-control input-error" : "form-control"}
                   />
+                  {errors.weight && touched.weight && <p className="error">{errors.weight}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Height</label> */}
                   <input
-                     className="form-control"
+
                      id="height"
                      type="number"
                      name="height"
                      placeholder="Height (inches)"
-                     value={formData.height}
+                     value={values.height}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.height && touched.height ? "form-control input-error" : "form-control"}
                   />
+                  {errors.height && touched.height && <p className="error">{errors.height}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Gender</label> */}
                   <select
-                     className="form-control"
+
                      id="gender"
                      name="gender"
-                     placeholder="Gender"
-                     value={formData.gender} onChange={handleChange}
-                     required
+                     placeholder="Select gender"
+                     value={values.gender}
+                     onChange={handleChange}
+                     onBlur={handleBlur}
+                     className={errors.gender && touched.gender ? "form-control input-error" : "form-control"}
                   >
-                     <option selected value="male">Male</option>
+                     <option>Gender...</option>
+                     <option value="male">Male</option>
                      <option value="female">Female</option>
                   </select>
-                  {/* <input
-                           className="form-control"
-                           id="gender"
-                           type="text"
-                           name="gender"
-                           placeholder="Gender"
-                           value={formData.gender}
-                           onChange={handleChange}
-                        
-                        /> */}
 
+                  {errors.gender && touched.gender && <p className="error">{errors.gender}</p>}
                </div>
-
                <div className="form-group">
-                  {/* <label>Physical Activity</label> */}
+
                   <select
-                     className="form-control"
                      id="pal"
                      type="number"
-                     value={formData.pal}
                      name="pal"
-                     placeholder="Physical Activity Level"
+                     value={values.pal}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className={errors.pal && touched.pal ? "form-control input-error" : "form-control"}
                   >
-                     <option value={1.2}>Little or No exercise</option>
-                     <option value={1.4}>Light exercise 1-2 times a week</option>
-                     <option value={1.6}>Moderate exercise 2-3 times/week</option>
-                     <option value={1.75}>Hard exercise 3-5 times/week</option>
-                     <option value={2.0}>I have a physical job or perform hard exercise 6-7 times/week</option>
-                     <option value={2.4}>Professional Athlete</option>
+                     <option>Physical Activity Level...</option>
+                     <option value="1.2">Little or No exercise</option>
+                     <option value="1.4">Light exercise 1-2 times a week</option>
+                     <option value="1.6">Moderate exercise 2-3 times/week</option>
+                     <option value="1.75">Hard exercise 3-5 times/week</option>
+                     <option value="2.0">I have a physical job or perform hard exercise 6-7 times/week</option>
+                     <option value="2.4">Professional Athlete</option>
                   </select>
-                  {/* <input
-                           className="form-control"
-                           id="pal"
-                           type="number"
-                           name="pal"
-                           placeholder="Physical Activity Level"
-                           value={formData.pal}
-                           onChange={handleChange}
-                        // required
-                        /> */}
-               </div>
 
+                  {errors.pal && touched.pal && <p className="error">{errors.pal}</p>}
+               </div>
                <div className="form-group">
-                  {/* <label>Goal Weight</label> */}
                   <select
-                     className="form-control"
+
                      id="goalWeight"
-                     value={formData.goalWeight}
                      name="goalWeight"
-                     placeholder="Goal Weight"
+                     placeholder="Select Goal"
+                     value={values.goalWeight}
                      onChange={handleChange}
-                     required
+                     onBlur={handleBlur}
+                     className="form-control"
+                     className={errors.goalWeight && touched.goalWeight ? "form-control input-error" : "form-control"}
                   >
+                     <option>Goal Weight...</option>
                      <option value="lose">Lose</option>
                      <option value="maintain">Maintain</option>
                      <option value="gain">Gain</option>
                   </select>
-                  {/* <input
-                           className="form-control"
-                           id="goalWeight"
-                           type="text"
-                           name="goalWeight"
-                           placeholder="Goal Weight"
-                           value={formData.goalWeight}
-                           onChange={handleChange}
-                        // required
-                        /> */}
+
+                  {errors.goalWeight && touched.goalWeight && <p className="error">{errors.goalWeight}</p>}
                </div>
 
                {/* {formErrors.length
@@ -254,15 +238,21 @@ function Register({ register }) {
                         : null
                      } */}
 
-               <button className="btn btn success font-weight-bold mr-3" type="submit">
-                  Register
-               </button>
+               <Button
+                  className="btn"
+                  outline
+                  color="warning"
+                  size="sm"
+                  type="submit">
+                  register
+               </Button>
 
-            </form>
+            </form >
             {/* </div>
             </div> */}
-         </div>
+         </div >
       </div>
+
    )
 };
 

@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardTitle, Button, ButtonGroup } from 'reactstrap';
 import UserContext from '../auth/UserContext';
+import { Table } from 'reactstrap';
 
 function FavoriteCard({ id, title }) {
 
@@ -32,42 +33,52 @@ function FavoriteCard({ id, title }) {
    return (
       <div className="FavoriteCard">
          <Card className="card-body">
-            <Link className="FavoriteCard" to={`/recipe/${id}`}>
-               <CardTitle className="card-title">{title}</CardTitle>
-            </Link>
-            <ButtonGroup>
-               {saved ? (<Button
-                  // className="btn btn-success font-weight-bold mr-3"
-                  className="btn"
-                  outline color="warning"
-                  size="sm"
-                  onClick={handleUnFavorite}>
-                  unfavorite
-               </Button>)
-                  : (
-                     <Button
-                        // className="btn btn-success font-weight-bold mr-3"
-                        className="btn"
-                        outline color="warning"
-                        size="sm"
-                        onClick={handleFavorite}>
-                        favorite
-                     </Button>
-                  )}
+            <div>
+               <Table>
+                  <thead>
+                     <tr>
+                        <th>
+                           <Link className="FavoriteCard" to={`/recipe/${id}`}>
+                              <CardTitle className="card-title">{title}</CardTitle>
+                           </Link>
+                        </th>
+                        <td>
 
-               <Button
-                  // className="btn btn-success font-weight-bold mr-3"
-                  className="btn"
-                  outline color="warning"
-                  size="sm"
-               >
-                  Log
-               </Button>
-            </ButtonGroup>
+                        </td>
+                        <td className="fav-log-btns">
+                           <ButtonGroup>
+                              {saved ? (<Button
+                                 className="btn"
+                                 outline color="warning"
+                                 size="sm"
+                                 onClick={handleUnFavorite}>
+                                 unfavorite
+                              </Button>)
+                                 : (
+                                    <Button
+                                       className="btn"
+                                       outline color="warning"
+                                       size="sm"
+                                       onClick={handleFavorite}>
+                                       favorite
+                                    </Button>
+                                 )}
+
+                              <Button
+                                 className="btn"
+                                 outline color="warning"
+                                 size="sm"
+                              >
+                                 Log
+                              </Button>
+                           </ButtonGroup>
+
+                        </td>
+                     </tr>
+                  </thead>
+               </Table>
+            </div>
          </Card>
-
-
-
       </div>
    )
 };

@@ -28,7 +28,14 @@ a:hover{
 .card-title{
   font-size: 25px;
   font-weight: 400;
-  
+  text-align: left;
+}
+.fav-log-btns{
+  text-align: right;
+}
+.recipecard-body{
+  text-align: left;
+  color: white;
 }
 .list-title, .form-title{
   color: rgba(189, 21, 21, 0.575);

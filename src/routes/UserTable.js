@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext, } from 'react'
 import UserContext from '../auth/UserContext';
-import { useHistory } from 'react-router-dom'
 import { Table } from 'reactstrap'
 
 
@@ -8,7 +7,7 @@ function UserTable() {
 
    const { currentUser } = useContext(UserContext);
 
-   const { username, firstName, lastName, email, age, weight, height, gender, pal, goalWeight, dailyCal, logs } = currentUser;
+   const { username, firstName, lastName, email, age, weight, height, gender, pal, goalWeight, dailyCal } = currentUser;
 
    // const palMap = new Map([
    //    [1.2, "Little or No exercise"],

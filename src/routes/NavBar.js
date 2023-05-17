@@ -13,8 +13,8 @@ function NavBar({ logout }) {
    const [isRecipeOpen, setIsRecipeOpen] = useState(false);
    const toggleRecipes = () => setIsRecipeOpen(!isRecipeOpen)
 
-   const [isSearchOpen, setIsSearchOpen] = useState(false);
-   const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
+   // const [isSearchOpen, setIsSearchOpen] = useState(false);
+   // const toggleSearch = () => setIsSearchOpen(!isSearchOpen)
 
 
    function loggedInNav() {
@@ -26,22 +26,12 @@ function NavBar({ logout }) {
                </NavLink>
 
                <Nav className="me-auto" navbar>
-                  {/* <NavItem className="navbar-item">
-                     <NavLink className="nav-link" to="/recipes">All Recipes</NavLink>
-                  </NavItem>
-                  <NavItem className="navbar-item">
-                     <NavLink className="nav-link" to="/create">Create Recipe</NavLink>
-                  </NavItem>
-                  <NavItem className="navbar-item">
-                     <NavLink className="nav-link" to="/favorites">Favorites</NavLink>
-                  </NavItem> */}
 
                   < Dropdown isOpen={isRecipeOpen} toggle={toggleRecipes} >
                      <DropdownToggle color="none" className="navbar-item" caret>
                         Recipes
                      </DropdownToggle>
                      <DropdownMenu>
-
                         <DropdownItem className="navbar-item" tag={Link} to={`/recipes`} >
                            all recipes
                         </DropdownItem>

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import UserContext from '../auth/UserContext';
 import { useContext } from 'react';
 import { createSchema } from '../schemas/createSchema';
-// import Alert from '../Alert';
+import Alert from '../Alert';
 import { useFormik } from 'formik';
 import KitchenApi from '../api';
 import { Button } from 'reactstrap';
@@ -143,10 +143,10 @@ function CreateRecipe() {
                </div>
 
 
-               {/* {formErrors.length
-                        ? <Alert type="danger" messages={formErrors} />
-                        : null
-                     } */}
+               {formErrors.length
+                  ? <Alert type="danger" messages={formErrors} />
+                  : null
+               }
 
                <Button
                   className="btn"

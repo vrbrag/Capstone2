@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import KitchenApi from '../api';
-import UserContext from '../auth/UserContext';
-import { Card, CardTitle, CardSubtitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import './RecipeLogInfo.css'
 
 function RecipeLogInfo({ id }) {
 
-   const { currentUser } = useContext(UserContext);
    const [recipe, setRecipe] = useState([]);
 
    // console.log("RecipeLogInfo", "id type", typeof (id))

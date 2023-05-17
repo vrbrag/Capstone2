@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import KitchenApi from '../api';
 import UserContext from '../auth/UserContext';
 import RecipeCard from './RecipeCard';
-import SearchForm from '../SearchForm';
 
 function MyRecipesList() {
 

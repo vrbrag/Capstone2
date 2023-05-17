@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserContext from '../auth/UserContext';
 import { useContext } from 'react';
 import { useParams } from 'react-router';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Card, CardTitle, ButtonGroup, Button } from 'reactstrap';
 import KitchenApi from '../api';
 

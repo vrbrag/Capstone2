@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import UserContext from '../auth/UserContext';
-import { useHistory } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import RecipeLogInfo from './RecipeLogInfo';
 import './LogTable.css'
@@ -14,7 +13,7 @@ function ListItem(recipe) {
 function LogTable(log) {
 
    const { currentUser } = useContext(UserContext);
-   const { id, dailyTotal, recipeIds, date, isGoal } = log;
+   const { dailyTotal, recipeIds, date, isGoal } = log;
    console.log(recipeIds)
 
    const listRecipes = recipeIds.map((recipe, index) =>

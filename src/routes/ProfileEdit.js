@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import UserContext from '../auth/UserContext';
-import { useHistory } from 'react-router-dom'
-import { Card, CardBody } from 'reactstrap'
-import Alert from '../Alert'
+import { useHistory } from 'react-router-dom';
+import Alert from '../Alert';
 import KitchenApi from '../api';
 
 function ProfileEdit() {
