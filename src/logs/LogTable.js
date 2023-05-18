@@ -30,7 +30,7 @@ function LogTable(log) {
    const dateFormatted = date.toLocaleString('en-IN', options)
    console.log(dateFormatted)
 
-   const caloriesLeft = currentUser.dailyCal - dailyTotal;
+   const caloriesLeft = (currentUser.dailyCal - dailyTotal).toFixed(2);
 
    return (
       <div>

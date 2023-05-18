@@ -221,7 +221,6 @@ function Register({ register }) {
                      value={values.goalWeight}
                      onChange={handleChange}
                      onBlur={handleBlur}
-                     className="form-control"
                      className={errors.goalWeight && touched.goalWeight ? "form-control input-error" : "form-control"}
                   >
                      <option>Goal Weight...</option>

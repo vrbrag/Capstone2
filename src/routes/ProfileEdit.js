@@ -57,6 +57,9 @@ function ProfileEdit() {
       }
 
       profileData.pal = parseFloat(profileData.pal)
+      profileData.age = parseFloat(profileData.age)
+      profileData.height = parseFloat(profileData.height)
+      profileData.weight = parseFloat(profileData.weight)
       let username = currentUser.username;
       let updatedData;
       try {
@@ -123,6 +126,7 @@ function ProfileEdit() {
                   <label>Age</label>
                   <input
                      className="form-control"
+                     type="number"
                      name="age"
                      value={formData.age}
                      onChange={handleChange}
