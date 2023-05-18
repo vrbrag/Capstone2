@@ -22,13 +22,13 @@ function Home() {
                   <p>
                      <Link
                         className="btn"
-                        outline
+                        outline="true"
                         color="warning"
                         size="sm" to="/login">log in
                      </Link>
                      <Link
                         className="btn"
-                        outline
+                        outline="true"
                         color="warning"
                         size="sm" to="/register">register
                      </Link>
