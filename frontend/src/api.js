@@ -1,7 +1,7 @@
 import axios from "axios";
 
-REACT_APP_BASE_URL = "https://kitchen-backend-i18e.onrender.com";
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3005";
+// const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3005";
+const BASE_URL = "https://kitchen-backend-i18e.onrender.com" || "http://localhost:3005";
 
 /** API Class.
  *
